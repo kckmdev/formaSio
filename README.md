@@ -1,5 +1,3 @@
 # FORMA MISSION 2
 
-![](https://i.imgur.com/WHoxs1Q.png)
-[Modifier le MLD](https://www.mocodo.net/?mcd=eNp1kUtuwyAQhvc-xRyARbNlh_xIWAS74B6AoFGFFINjiNTjF4jrokoVC_75xXzzgDa0HKbU2HI281FQYCF4Y3W03vGOgPBL5RDgxi_Nnpcyp4nJuRdcEjidIAe85RMTc4krcNOce5WFYFz2FM4YMtBpu-Feh8C0oct3v2h7J3D1scNJh4ApWfa5hoAaQ-BNwDDK66vEoSgMflvqGY6YQOcT3WESGMxm193VETu8PeNLDjZ5rc9hq1dtbMSr_moUF6qVpfLfcetOKHB3sHMHGVlZBCR-3nFBF5sKQmHSW7TGrtrF_5aioo65rcE7k1n5My5czaPk7x9psRcbot_s41nWypzDNKq4VeTw817tKz36LlP9wsoXfwNy6qfe
-)
+[Documentation](/docs/index.md)
