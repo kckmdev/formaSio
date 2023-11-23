@@ -1,3 +1,2 @@
 # FORMA MISSION 2
-
-[Documentation](/docs/index.md)
+[Voir le wiki](https://github.com/kckmdev/formaSio/wiki)
