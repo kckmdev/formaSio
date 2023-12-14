@@ -2,34 +2,33 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Page d'accueil  
-Route::get('/', function () {
-    return view('welcome');
+// Routes pour les invités
+Route::group(['middleware' => 'guest'], function() {
+    Route::get('/', 'MainController@home');
+    Route::get('/login', 'Auth\LoginController@showLoginForm');
+    Route::post('/login', 'Auth\LoginController@login');
+    Route::get('/contact', 'ContactController@show');  
 });
 
-// Page de connexion 
-Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');  
+// Routes pour les utilisateurs authentifiés
+Route::group(['middleware' => 'auth'], function() {
+    Route::post('/logout', 'Auth\LoginController@logout');
+    Route::get('/profile', 'UserController@show');
+});
+// Routes administrateur
+Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], function() {
+    Route::get('/', 'Admin\DashboardController@index');
 
-// Page administrateur
-Route::get('/admin', 'AdminController@index')->name('admin');
+    // Gestion des formations en utilisant Route::resource
+    Route::resource('/formations', 'Admin\FormationController');
 
-// Gestion des formations 
-Route::resource('/formations', 'FormationController');
+    // Routes similaires pour les Intervenants en utilisant Route::resource
+    Route::resource('/intervenants', 'Admin\IntervenantController');
 
-// Gestion des intervenants
-Route::resource('/intervenants', 'IntervenantController');
+    // Gestion des domaines en utilisant Route::resource
+    Route::resource('/domaines', 'Admin\DomaineController');
 
-// Gestion des domaines  
-Route::resource('/domaines', 'DomaineController');
+    // Gestion des sessions en utilisant Route::resource
+    Route::resource('/sessions', 'Admin\SessionController');
+});
 
-// Gestion des sessions
-Route::resource('/sessions', 'SessionController'); 
-
-// Statistiques
-Route::get('/stats', 'StatController@index');  
-
-// Mentions légales
-Route::get('/legal', 'LegalController@index');
-
-// Contact 
-Route::get('/contact', 'ContactController@index');
