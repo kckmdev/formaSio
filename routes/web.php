@@ -33,3 +33,4 @@ Route::get('/legal', 'LegalController@index');
 
 // Contact 
 Route::get('/contact', 'ContactController@index');
+
