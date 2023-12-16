@@ -44,6 +44,65 @@ de Lorraine..
                 </div>
             </div>
         </div>
+    </div>
+    <!-- cards 3 max sur une ligne-->
+    <div class="flex flex-wrap justify-center">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg m-2">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">Gestion et Leadership</div>
+                <p class="text-gray-700 text-base">
+                Développez vos compétences en gestion et leadership avec nos formations spécialisées. Apprenez à conduire des réunions efficacement, à communiquer avec la presse, et à gérer les responsabilités des dirigeants dans le sport.
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Leadership</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Management</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#BusinessManagement</span>
+            </div>
+        </div>
+        <div class="max-w-sm rounded overflow-hidden shadow-lg m-2">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">Informatique et Design</div>
+                <p class="text-gray-700 text-base">
+                Maîtrisez les outils informatiques et de design les plus demandés. Que vous soyez débutant ou avancé, nos formations en Outlook, PowerPoint et Photoshop vous aideront à exceller.
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Informatique</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#DesignGraphique</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#TechnologyEducation</span>
+            </div>
+        </div>
+        <div class="max-w-sm rounded overflow-hidden shadow-lg m-2">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">Santé et Sécurité</div>
+                <p class="text-gray-700 text-base">
+                Acquérez des compétences vitales en matière de santé et de sécurité avec nos cours de premiers secours et de bonnes pratiques en sécurité. Devenez un acteur clé dans la prévention et la gestion des urgences.
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Santé</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Securité</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#secours </span>
+            </div>
+        </div>
+    
+
+    
+
+
+        
+
+    
 
 </body>
 
