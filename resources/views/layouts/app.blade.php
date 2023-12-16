@@ -1,9 +1,5 @@
-<body>
+<head>
 
-    @include('partials.header')
-  
-    @yield('content')
-  
-    @include('partials.footer')
-  
-</body>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
