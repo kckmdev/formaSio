@@ -49,7 +49,7 @@
     </div>
     <!-- cards 3 max sur une ligne-->
     <div class="flex flex-wrap justify-center">
-        <div class="max-w-sm rounded overflow-hidden shadow-lg m-2">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg m-2 flex flex-col justify-between">
             <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">Gestion et Leadership</div>
                 <p class="text-gray-700 text-base">
@@ -60,14 +60,14 @@
             </div>
             <div class="px-6 pt-4 pb-2">
                 <span
-                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Leadership</span>
+                    class="inline-block m-1 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Leadership</span>
                 <span
-                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Management</span>
+                    class="inline-block m-1 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Management</span>
                 <span
-                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#BusinessManagement</span>
+                    class="inline-block m-1 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#BusinessManagement</span>
             </div>
         </div>
-        <div class="max-w-sm rounded overflow-hidden shadow-lg m-2">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg m-2 flex flex-col justify-between">
             <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">Informatique et Design</div>
                 <p class="text-gray-700 text-base">
@@ -77,14 +77,14 @@
             </div>
             <div class="px-6 pt-4 pb-2">
                 <span
-                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Informatique</span>
+                    class="inline-block m-1 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Informatique</span>
                 <span
-                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#DesignGraphique</span>
+                    class="inline-block m-1 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#DesignGraphique</span>
                 <span
-                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#TechnologyEducation</span>
+                    class="inline-block m-1 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#TechnologyEducation</span>
             </div>
         </div>
-        <div class="max-w-sm rounded overflow-hidden shadow-lg m-2">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg m-2 flex flex-col justify-between">
             <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">Santé et Sécurité</div>
                 <p class="text-gray-700 text-base">
@@ -95,11 +95,11 @@
             </div>
             <div class="px-6 pt-4 pb-2">
                 <span
-                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Santé</span>
+                    class="inline-block m-1 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Santé</span>
                 <span
-                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Securité</span>
+                    class="inline-block m-1 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Securité</span>
                 <span
-                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#secours
+                    class="inline-block m-1 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#secours
                 </span>
             </div>
         </div>
