@@ -19,6 +19,8 @@ class CreateFormationsTable extends Migration
             $table->timestamp('duree');
             $table->integer('nb_places_max');
             $table->float('cout');
+            $table->unsignedBigInteger('intervenant_id');
+            $table->unsignedBigInteger('domaine_id');
             $table->foreign('intervenant_id')->references('id')->on('intervenants');
             $table->foreign('domaine_id')->references('id')->on('domaines');
             $table->timestamps();

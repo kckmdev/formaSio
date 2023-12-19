@@ -17,6 +17,8 @@ class CreateInscriptionsTable extends Migration
             $table->id();
             $table->dateTime('date_inscription');
             $table->enum('etat_paiement', ['en_cours', 'paye']);
+            $table->unsignedBigInteger('session_id');
+            $table->unsignedBigInteger('utilisateur_id');
             $table->foreign('session_id')->references('id')->on('sessions');
             $table->foreign('utilisateur_id')->references('id')->on('utilisateurs');
             $table->timestamps(); 

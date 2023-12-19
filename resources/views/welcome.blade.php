@@ -1,27 +1,8 @@
 @extends('layouts.app')
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
-</head>
+@section('title', 'Forma')
 
-<body class="bg-gray-100">
-    <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-3 text-white">
-        <ul class="flex">
-            <li class="mr-6"><a href="/">Forma</a></li>
-        </ul>
-
-        <div class="flex justify-end">
-            <ul class="flex">
-                <li class="mr-6"><a href="/contact">Formations</a></li>
-                <li class="mr-6"><a href="/login">Connexion</a></li>
-            </ul>
-        </div>
-    </nav>
-
+@section('content')
     <!-- Presentation -->
     <div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8">
@@ -125,11 +106,6 @@
         </div>
 
 
+    </div>
 
-
-
-
-
-</body>
-
-</html>
+@endsection

@@ -18,6 +18,7 @@ class CreateSessionsTable extends Migration
             $table->dateTime('date');
             $table->string('lieu');
             $table->integer('nb_places_restantes'); 
+            $table->unsignedBigInteger('formation_id');
             $table->foreign('formation_id')->references('id')->on('formations'); 
             $table->timestamps();
         });
