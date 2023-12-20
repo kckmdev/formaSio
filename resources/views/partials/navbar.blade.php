@@ -6,10 +6,9 @@
     <div class="flex justify-end">
         <ul class="flex">
             <li class="mr-6"><a href="/contact">Formations</a></li>
-            @if(Auth::check()) <!-- Vérifie si l'utilisateur est connecté -->
-                <!-- Affiche le nom de l'utilisateur et un lien pour se déconnecter -->
+            @if(Auth::check()) 
                 <li class="mr-6">
-                    <a href="/profile">{{ Auth::user()->name }}</a> <!-- Modifier selon le nom de l'attribut du nom d'utilisateur -->
+                    <a href="/profile" class="text-white font-bold bg-green-500 px-4 py-2 rounded-full hover:bg-green-600">Profil de {{ Auth::user()->nom }}</a>
                 </li>
                 <li class="mr-6">
                     <form action="/logout" method="POST">
