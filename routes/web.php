@@ -6,12 +6,13 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'guest'], function() {
     Route::get('/', 'MainController@home');
     Route::get('/login', 'Auth\LoginController@showLoginForm');
-    Route::post('/login', 'Auth\LoginController@login');
+    Route::post('/login', 'Auth\LoginController@login')->name('login');
     Route::get('/contact', 'ContactController@show');  
 });
 
 // Routes pour les utilisateurs authentifiés
 Route::group(['middleware' => 'auth'], function() {
+    Route::get('/menu', 'MenuController@home')->name('menu');
     Route::post('/logout', 'Auth\LoginController@logout');
     Route::get('/profile', 'UserController@show');
 });
