@@ -5,7 +5,7 @@
 
     <div class="flex justify-end">
         <ul class="flex">
-            <li class="mr-6"><a href="/contact">Formations</a></li>
+            <li class="mr-6"><a href="/formations">Formations</a></li>
             @if(Auth::check()) 
                 <li class="mr-6">
                     <a href="/profile" class="text-white font-bold bg-green-500 px-4 py-2 rounded-full hover:bg-green-600">Profil de {{ Auth::user()->nom }}</a>

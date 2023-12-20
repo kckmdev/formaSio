@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormationController;
 
 // Routes pour les invités
 Route::group(['middleware' => 'guest'], function() {
@@ -14,6 +15,7 @@ Route::group(['middleware' => 'guest'], function() {
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/menu', 'MenuController@home')->name('menu');
     Route::post('/logout', 'Auth\LoginController@logout');
+    Route::get('/formations', [FormationController::class, 'index']);
     Route::get('/profile', 'UserController@show');
 });
 
