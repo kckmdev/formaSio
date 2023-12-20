@@ -40,5 +40,15 @@ class LoginController extends Controller
             Log::info('Connexion réussie pour l\'email : ' . $request->email);
             return redirect()->route('admin.dashboard')->with('status', 'Vous êtes connecté en tant qu\'administrateur');
         }
-    
-}}
+
+        //function logout
+
+    }
+
+    //methode logout redirect to /
+    public function logout()
+    {
+        auth()->logout();
+        return redirect('/');
+    }
+}
