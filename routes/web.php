@@ -19,7 +19,8 @@ Route::group(['middleware' => 'auth'], function() {
 
 // Routes administrateur
 Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], function() {
-    Route::get('/', 'Admin\DashboardController@index');
+    Route::redirect('/', '/admin/dashboard');
+    Route::get('/dashboard', 'Admin\DashboardController@index');
 
     // Gestion des formations en utilisant Route::resource
     Route::resource('/formations', 'Admin\FormationController');
