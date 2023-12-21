@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Domaine extends Model
 {
     use HasFactory;
+    protected $table = 'domaines';
 
     public function formations()
     {

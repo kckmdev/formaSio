@@ -35,13 +35,22 @@ class Formations extends Model
 
     public function sessions()
     {
-        return $this->hasMany(Session::class); // Laravel utilisera automatiquement 'formation_id' comme clé étrangère
+        return $this->hasMany(Session::class, 'formation_id');
     }
-    
+
     // Exemple d'un accesseur pour formater le coût
     public function getCoutFormattedAttribute()
     {
         return number_format($this->cout, 2, ',', ' ') . ' €';
     }
+
+    public function show($formationId)
+{
+    // Récupérez la formation en fonction de $formationId depuis la base de données
+    $formation = Formations::findOrFail($formationId);
+
+    // Passez la formation à la vue
+    return view('inscription', ['formation' => $formation]);
+}
 
 }
