@@ -16,7 +16,7 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->role == 'utilisateur') {
+        if (auth()->user()->statut == 'utilisateur') {
             return $next($request);
         }
         return redirect()->route('home');

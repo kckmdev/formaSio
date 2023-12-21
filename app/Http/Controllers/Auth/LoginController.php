@@ -32,7 +32,7 @@ class LoginController extends Controller
         //redirection user avec isUser
         if (auth()->user()->isUser()) {
             Log::info('Connexion réussie pour l\'email : ' . $request->email);
-            return redirect()->route('user.home')->with('statut', 'Vous êtes connecté en tant qu\'utilisateur');
+            return redirect()->route('user.dashboard')->with('statut', 'Vous êtes connecté en tant qu\'utilisateur');
         }
 
         //redirection admin avec isAdmin

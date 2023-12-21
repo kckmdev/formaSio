@@ -19,7 +19,16 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+                
+                //redirection user avec isUser
+                if (auth()->user()->isUser()) {
+                    return redirect()->route('user.dashboard')->with('statut', 'Vous êtes connecté en tant qu\'utilisateur');
+                }
+    
+                //redirection admin avec isAdmin
+                if (auth()->user()->isAdmin()) {
+                    return redirect()->route('admin.dashboard')->with('status', 'Vous êtes connecté en tant qu\'administrateur');
+                }
         }
 
         return $next($request);
