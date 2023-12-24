@@ -19,10 +19,16 @@
                 <button class="bg-blue-500 text-white rounded px-2 py-1 absolute top-2 right-2 -ml-10"
                     onclick="toggleDetails('{{ $formation->id }}', '{{ Str::slug($domainName) }}')">Voir plus</button>
                 <div id="details-{{ $formation->id }}" class="hidden">
-                    <p><strong>Date :</strong> {{ $formation->duree }}</p>
                     <p><strong>Places Max :</strong> {{ $formation->nb_places_max }}</p>
                     <p><strong>Prix :</strong> {{ $formation->getCoutFormattedAttribute() }}</p>
                     <p><strong>Domaine :</strong> {{ $formation->domaine->libelle ?? 'Non spécifié' }}</p>
+                    <p><strong>Session(s) :</strong></p>
+                    <ul>
+                        @forelse ($formation->sessions as $session)
+                        <li>{{ $session->date->format('d/m/Y') }} - {{ $session->lieu }}</li>
+                        @empty
+                        <li>Aucune session disponible</li>
+                        @endforelse
                     <button class="bg-green-500 text-white rounded px-2 py-1 mt-3 ">
                         <a href="{{ route('inscription', $formation->id) }}">S'inscrire en ligne</a>
                     </button>
