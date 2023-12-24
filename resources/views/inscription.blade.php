@@ -60,8 +60,8 @@
 
         <!-- Numéros des formations demandées -->
         <div class="mb-6">
-            <label for="formationNumbers" class="block text-sm font-medium text-gray-700">Numéros des formations
-                demandées (séparés par des espaces)</label>
+            <label for="formationNumbers" class="block text-sm font-medium text-gray-700">Numéro de la formation
+                demandée</label>
             <input type="text" name="formationNumbers" id="formationNumbers" class="mt-1 p-2 border rounded w-full" value='{{$formation->id}}'>
         </div>
         <!-- Documents justificatifs -->
