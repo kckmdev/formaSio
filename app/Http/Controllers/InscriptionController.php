@@ -1,30 +1,34 @@
 <?php
 
-    namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
-    use Illuminate\Http\Request;
-    use App\Models\Inscription;
+use Illuminate\Http\Request;
+use App\Models\Inscription;
+use App\Models\Formations;
 
-    class InscriptionController extends Controller
+class InscriptionController extends Controller
+{
+    //afficher le formulaire d'inscription
+
+    public function show(Request $request)
     {
-        public function create(FormationController $formation)
-        {
-            // Affiche le formulaire d'inscription avec les détails de la formation
-            return view('inscription', compact('formation'));
-        }
-
-        public function store(FormationController $formation)
-        {
-            // Validez les données du formulaire et enregistrez l'inscription
-            $data = request()->validate([
-                'utilisateur_id' => 'required',
-                'formation_id' => 'required',
-            ]);
-            // create a partir du model inscription
-            $inscription = Inscription::createFromForm($data);  
-
-            // Redirigez l'utilisateur vers une page de confirmation ou de succès
-            return redirect()->route('inscription.confirmation');
-        }
-
+        // Get the full URL
+        $url = $request->fullUrl();
+        
+        // Extract the query part of the URL
+        $query = parse_url($url, PHP_URL_QUERY);
+        
+        // Assume the query part is the ID you're looking for
+        $id = $query;
+        
+        // Find the formation by the extracted ID
+        $formation = Formations::find($id);
+    
+        // Pass the formation to the view
+        return view('inscription', ['formation' => $formation]);
     }
+    
+
+
+
+}

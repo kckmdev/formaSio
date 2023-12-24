@@ -6,7 +6,8 @@
 
 <div class="bg-white p-8 mx-auto shadow-lg rounded-lg w-96 xl:w-1/2">
     <h1 class="text-2xl font-bold mb-6">BULLETIN D’INSCRIPTION</h1>
-    <p class="mb-6">FORMATIONS 2023-2024</p>
+    
+    <h2 class="text-xl font-bold mb-6">Formation : {{ $formation->intitule }}</h2>
 
     <form action="{{ route('inscription') }}" method="POST">
         @csrf
@@ -61,8 +62,7 @@
         <div class="mb-6">
             <label for="formationNumbers" class="block text-sm font-medium text-gray-700">Numéros des formations
                 demandées (séparés par des espaces)</label>
-            <input type="text" name="formationNumbers" id="formationNumbers" class="mt-1 p-2 border rounded w-full"
-            value="{{ $formation->id }}">>
+            <input type="text" name="formationNumbers" id="formationNumbers" class="mt-1 p-2 border rounded w-full" value='{{$formation->id}}'>
         </div>
         <!-- Documents justificatifs -->
         <div class="mb-6">

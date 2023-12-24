@@ -16,14 +16,19 @@
             @forelse ($formations as $formation)
             <div class="border p-4 rounded  ml-20 mr-20 relative">
                 <h3 class="text-xl font-semibold text-gray-800">{{ $formation->intitule }}</h3>
-                <button class="bg-blue-500 text-white rounded px-2 py-1 absolute top-2 right-2 -ml-10" onclick="toggleDetails('{{ $formation->id }}', '{{ Str::slug($domainName) }}')">Voir plus</button>
+                <button class="bg-blue-500 text-white rounded px-2 py-1 absolute top-2 right-2 -ml-10"
+                    onclick="toggleDetails('{{ $formation->id }}', '{{ Str::slug($domainName) }}')">Voir plus</button>
                 <div id="details-{{ $formation->id }}" class="hidden">
                     <p><strong>Date :</strong> {{ $formation->duree }}</p>
                     <p><strong>Places Max :</strong> {{ $formation->nb_places_max }}</p>
                     <p><strong>Prix :</strong> {{ $formation->getCoutFormattedAttribute() }}</p>
                     <p><strong>Domaine :</strong> {{ $formation->domaine->libelle ?? 'Non spécifié' }}</p>
-                    <button class="bg-green-500 text-white rounded px-2 py-1 mt-3 "onclick="openInscriptionForm('{{ $formation->numero }}')">
-                        <a href="{{ route('inscription') }}" class="text-white">S'inscrire</a>
+                    <button class="bg-green-500 text-white rounded px-2 py-1 mt-3 ">
+                        <a href="{{ route('inscription', $formation->id) }}">S'inscrire en ligne</a>
+                    </button>
+                    <button class="bg-red-500 text-white rounded px-2 py-1 mt-3 "
+                        onclick="telechargerPdf('{{ $formation->numero }}')">
+                        <a href="{{ route('telechargerPdf') }}" class="text-white">Formulaire en pdf</a>
                     </button>
                 </div>
             </div>
@@ -69,12 +74,12 @@
             behavior: 'smooth',
         });
 
-        
+
     }
     //redirect to inscription form with autocomplete in form
     function openInscriptionForm(formationId) {
-            window.location.href = "{{ route('inscription') }}?formation_id=" + formationId;
-        }
+        window.location.href = "{{ route('inscription') }}?formation_id=" + formationId;
+    }
 </script>
 
 @endsection
