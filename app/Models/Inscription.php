@@ -23,9 +23,13 @@ class Inscription extends Model
     }
 
     //relation avec formation
-    public function formation()
+    public function formations()
     {
         return $this->belongsTo(Formations::class, 'formation_id');
+    }
+    public function session()
+    {
+        return $this->belongsTo(Session::class); // Assurez-vous que Session est le nom correct du modèle
     }
 
     //methode pour créer une inscription à partir des données du formulaire

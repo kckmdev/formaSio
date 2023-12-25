@@ -9,8 +9,7 @@ use App\Models\Domaine;
 
 class InscriptionController extends Controller
 {
-    //afficher le formulaire d'inscription
-
+    //show inscription form
     public function show(Request $request)
     {
         $url = $request->fullUrl();
@@ -20,24 +19,16 @@ class InscriptionController extends Controller
         return view('inscription', ['formation' => $formation], ['domaines' => Domaine::all()]);
     }
 
-    public function verifierInscriptions(Request $request)
-    {
-
-        $user = $request->user(); // récupérer l'utilisateur connecté
-
-        $inscriptions = $user->inscriptions; // récupérer les inscriptions de l'utilisateur
-
-    }
 
     //create inscription
     public function create(Request $request)
     {
-        //check if user is already inscribed
+        //check if user is already registered to this session
         $inscription = Inscription::where('utilisateur_id', auth()->user()->id)->where('session_id', $request->input('session'))->first();
         if ($inscription) {
             return redirect()->back()->with('error', 'Vous êtes déjà inscrit à cette formation');
         }
-        //check if user has more than 3 inscriptions the same year
+        //check if user has more than 3 registrations in the same year 
         $anneeCourante = date('Y');
 
         $inscriptions = Inscription::where('utilisateur_id', auth()->user()->id)
@@ -47,7 +38,36 @@ class InscriptionController extends Controller
         if (count($inscriptions) >= 3) {
             return redirect()->back()->with('error', 'Vous ne pouvez pas vous inscrire à plus de 3 formations par an');
         }
+        //check if user has more than 2 registrations in the same domain
+        $session = $request->input('session');
+        $formation = Formations::find($session);
+        $domaine = $formation->domaine;
+        $domaine_id = $domaine->id;
 
+        if ($domaine_id) {
+            $count = Inscription::where('utilisateur_id', auth()->user()->id)
+                ->whereHas('session.formation', function ($query) use ($domaine_id) {
+                    $query->where('domaine_id', $domaine_id);
+                })
+                ->whereYear('created_at', $anneeCourante) 
+                ->count();
+
+            
+            if ($count >= 2) {
+                return redirect()->back()->with('error', 'Vous ne pouvez pas vous inscrire à plus de 2 formations dans le même domaine pour l\'année courante');
+            }
+        }
+
+        //check if registrations are open
+        $mois = date('m');
+        $jour = date('d');
+
+        if ($mois < 9 || ($mois == 9 && $jour < 1)) {
+            return redirect()->back()->with('error', 'Les inscriptions ne sont pas encore ouvertes');
+        }
+
+
+        //if all checks are ok, create the registration
         $inscription = new Inscription();
         $inscription->date_inscription = now();
         $inscription->etat_paiement = 'en_cours';
