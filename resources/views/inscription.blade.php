@@ -15,7 +15,6 @@
 
     <form action="{{ route('inscription') }}" method="POST">
         @csrf
-        <!-- Coordonnées de l'association -->
         <div class="mb-6">
             <label for="associationName" class="block text-sm font-medium text-gray-700">Nom de l'association</label>
             <input type="text" name="associationName" id="associationName" class="mt-1 p-2 border rounded w-full" required>
@@ -29,9 +28,7 @@
                 association</label>
             <input type="text" name="contactName" id="contactName" class="mt-1 p-2 border rounded w-full" required>
         </div>
-        <!-- Autres champs pour les coordonnées de l'association -->
 
-        <!-- Informations sur le stagiaire -->
         <div class="mb-6">
             <label for="stagiaireName" class="block text-sm font-medium text-gray-700">Nom et Prénom du
                 stagiaire</label>
@@ -41,11 +38,9 @@
             <label for="stagiaireAddress" class="block text-sm font-medium text-gray-700">Adresse du stagiaire</label>
             <input type="text" name="stagiaireAddress" id="stagiaireAddress" class="mt-1 p-2 border rounded w-full" required>
         </div>
-        <!-- Autres champs pour les informations sur le stagiaire -->
 
         <div class="mb-6">
             <label class="block text-sm font-medium text-gray-700">Choisir une session</label>
-            <!-- Choisir la session de la base de donnée avec  -->
             <select name="session" id="session" class="mt-1 p-2 border rounded w-full" required>
                 <option value="">Choisir une session</option>
                 @foreach ($formation->sessions as $session)
@@ -55,15 +50,12 @@
 
         </div>
 
-
-
-        <!-- Numéros des formations demandées -->
         <div class="mb-6">
             <label for="formationNumbers" class="block text-sm font-medium text-gray-700">Numéro de la formation
                 demandée</label>
             <input type="text" name="formationNumbers" id="formationNumbers" class="mt-1 p-2 border rounded w-full" value='{{$formation->id}}'>
         </div>
-        <!-- Documents justificatifs -->
+
         <div class="mb-6">
             <label for="documents" class="block text-sm font-medium text-gray-700">Documents justificatifs (joindre pour
                 la vérification)</label>
