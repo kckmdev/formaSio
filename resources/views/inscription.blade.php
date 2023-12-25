@@ -43,17 +43,15 @@
         <!-- Choisir le statut (Salarié ou Bénévole) -->
         
         <div class="mb-6">
-            <label class="block text-sm font-medium text-gray-700">Statut</label>
-            <div class="mt-2">
-                <label class="inline-flex items-center">
-                    <input type="checkbox" name="statut" value="Salarié" class="form-checkbox text-blue-500">
-                    <span class="ml-2">Salarié</span>
-                </label>
-                <label class="inline-flex items-center ml-6">
-                    <input type="checkbox" name="statut" value="Bénévole" class="form-checkbox text-blue-500">
-                    <span class="ml-2">Bénévole</span>
-                </label>
-            </div>
+            <label class="block text-sm font-medium text-gray-700">Choisir une session</label>
+            <!-- Choisir la session de la base de donnée avec  -->
+            <select name="session" id="session" class="mt-1 p-2 border rounded w-full" required>
+                <option value="">Choisir une session</option>
+                @foreach ($formation->sessions as $session)
+                <option value="{{ $session->id }}">{{ $session->date->format('d/m/Y H:i:s') }} - {{ $session->lieu }}</option>
+                @endforeach
+            </select>
+            
         </div>
 
 
