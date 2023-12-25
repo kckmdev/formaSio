@@ -18,4 +18,9 @@ class Session extends Model
     {
         return $this->belongsTo(Formations::class, 'formation_id');
     }
+
+    public function inscriptions()
+    {
+        return $this->hasMany(Inscription::class);
+    }
 }

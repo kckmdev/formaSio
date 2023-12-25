@@ -14,4 +14,12 @@ class Domaine extends Model
     {
         return $this->hasMany(Formations::class);
     }
+
+    public function getAllDomaines()
+    {
+        $domaines = Domaine::all();
+        return $domaines;
+    }
+    
+    
 }
