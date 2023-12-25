@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/logout', 'Auth\LoginController@logout');
     Route::get('/formations', [FormationController::class, 'index']);
     Route::get('/inscription', 'InscriptionController@show')->name('inscription');
+    Route::post('/inscription', 'InscriptionController@create');
     Route::get('/telechargerPdf', 'FormationController@telechargerPdf')->name('telechargerPdf');
     Route::get('/profile', 'UserController@show');
 });

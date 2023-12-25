@@ -12,20 +12,25 @@ class InscriptionController extends Controller
 
     public function show(Request $request)
     {
-        // Get the full URL
         $url = $request->fullUrl();
-        
-        // Extract the query part of the URL
-        $query = parse_url($url, PHP_URL_QUERY);
-        
-        // Assume the query part is the ID you're looking for
+        $query = parse_url($url, PHP_URL_QUERY); 
         $id = $query;
-        
-        // Find the formation by the extracted ID
         $formation = Formations::find($id);
-    
-        // Pass the formation to the view
         return view('inscription', ['formation' => $formation]);
+    }
+
+    //create inscription
+    public function create(Request $request)
+    {
+    
+        $inscription = new Inscription();
+        $inscription->date_inscription = now(); 
+        $inscription->etat_paiement = 'en_cours'; 
+        $inscription->session_id = $request->input('session'); 
+        $inscription->utilisateur_id = auth()->user()->id; 
+        $inscription->save();
+    
+        return redirect()->route('profil');
     }
     
 

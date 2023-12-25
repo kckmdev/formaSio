@@ -40,7 +40,6 @@
                 required>
         </div>
         <!-- Autres champs pour les informations sur le stagiaire -->
-        <!-- Choisir le statut (Salarié ou Bénévole) -->
         
         <div class="mb-6">
             <label class="block text-sm font-medium text-gray-700">Choisir une session</label>
