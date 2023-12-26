@@ -92,4 +92,12 @@ class InscriptionController extends Controller
 
         return redirect()->route('profil');
     }
+
+    //delete a registration
+    public function delete($id)
+    {
+        $inscription = Inscription::find($id);
+        $inscription->delete();
+        return redirect()->route('profil');
+    }
 }

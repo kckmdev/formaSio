@@ -29,7 +29,7 @@ class Inscription extends Model
     }
 
 
-    //relation avec utilisateur
+    //relation with utilisateur
     public function utilisateur()
     {
         return $this->belongsTo(CustomUser::class, 'utilisateur_id');

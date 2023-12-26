@@ -16,6 +16,10 @@ class Session extends Model
     // function to increase the number of available places in the session if a registration is deleted
     public function incrementAvailablePlaces()
     {
+        // additional check to avoid incrementing the number of available places if it is already equal to the number of places in the session
+        if ($this->nb_places_restantes == $this->formation->nb_places) {
+            return;
+        }
         $this->nb_places_restantes += 1;
         $this->save();
     }

@@ -67,9 +67,12 @@
                                             <span>{{ $inscription->etat_paiement }}</span>
                                         </div>
                                     </div>
-                                    <button class="bg-red-500 text-white px-3 py-1 rounded-md">
-                                        Annuler l'inscription
-                                    </button>
+                                    <form action="{{ route('delete', $inscription->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler cette inscription ?');">
+                                        @csrf
+                                        <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded-md">
+                                            Annuler l'inscription
+                                        </button>
+                                    </form>
                                 </div>
                                 @empty
                                 <p class="text-center">Vous n'êtes inscrit à aucune formation.</p>
