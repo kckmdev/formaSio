@@ -36,7 +36,7 @@ class Inscription extends Model
     }
 
     //relation avec formation
-    public function formations()
+    public function formation()
     {
         return $this->belongsTo(Formations::class, 'formation_id');
     }

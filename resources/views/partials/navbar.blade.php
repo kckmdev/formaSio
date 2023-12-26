@@ -8,7 +8,7 @@
             <li class="mr-6"><a href="/formations">Formations</a></li>
             @if(Auth::check())
             <li class="mr-6">
-                <a href="/profile" class="text-white font-bold bg-gray-700 px-4 py-2 rounded-full shadow-md hover:shadow-lg border border-gray-700 hover:border-gray-500 transform hover:scale-105 active:scale-90 active:shadow-inner active:text-gray-300 transition duration-150 ease-in-out">
+                <a href="/profil" class="text-white font-bold bg-gray-700 px-4 py-2 rounded-full shadow-md hover:shadow-lg border border-gray-700 hover:border-gray-500 transform hover:scale-105 active:scale-90 active:shadow-inner active:text-gray-300 transition duration-150 ease-in-out">
                     Profil de {{ Auth::user()->nom }}
                 </a>
             </li>
