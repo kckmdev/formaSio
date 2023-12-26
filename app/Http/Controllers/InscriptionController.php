@@ -23,6 +23,14 @@ class InscriptionController extends Controller
     //create inscription
     public function create(Request $request)
     {
+
+        // check if number of available places is > 0
+        $session = $request->input('session');
+        $session = \App\Models\Session::find($session);
+        if ($session->nb_places_restantes <= 0) {
+            return redirect()->back()->with('error', 'Il n\'y a plus de places disponibles pour cette formation');
+        }
+        
         //check if user is already registered to this session
         $inscription = Inscription::where('utilisateur_id', auth()->user()->id)->where('session_id', $request->input('session'))->first();
         if ($inscription) {
@@ -74,6 +82,13 @@ class InscriptionController extends Controller
         $inscription->session_id = $request->input('session');
         $inscription->utilisateur_id = auth()->user()->id;
         $inscription->save();
+
+        //update the number of remaining places
+        $session = $request->input('session');
+        $session = \App\Models\Session::find($session);
+        $session->nb_places_restantes = $session->nb_places_restantes - 1;
+        $session->save();
+        
 
         return redirect()->route('profil');
     }

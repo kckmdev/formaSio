@@ -19,13 +19,14 @@
                 <button class="bg-blue-500 text-white rounded px-2 py-1 absolute top-2 right-2 -ml-10"
                     onclick="toggleDetails('{{ $formation->id }}', '{{ Str::slug($domainName) }}')">Voir plus</button>
                 <div id="details-{{ $formation->id }}" class="hidden">
-                    <p><strong>Places Max :</strong> {{ $formation->nb_places_max }}</p>
+                    <p><strong>Places max de la formation:</strong> {{ $formation->nb_places_max }}</p>
                     <p><strong>Prix :</strong> {{ $formation->getCoutFormattedAttribute() }}</p>
                     <p><strong>Domaine :</strong> {{ $formation->domaine->libelle ?? 'Non spécifié' }}</p>
                     <p><strong>Session(s) :</strong></p>
                     <ul>
                         @forelse ($formation->sessions as $session)
                         <li>{{ $session->date->format('d/m/Y') }} - {{ $session->lieu }}</li>
+                        <p><strong>Places Restantes:</strong> {{ $session->nb_places_restantes }}</p>
                         @empty
                         <li>Aucune session disponible</li>
                         @endforelse

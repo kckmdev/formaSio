@@ -13,6 +13,14 @@ class Session extends Model
         'date' => 'datetime',
     ];
 
+    // function to increase the number of available places in the session if a registration is deleted
+    public function incrementAvailablePlaces()
+    {
+        $this->nb_places_restantes += 1;
+        $this->save();
+    }
+
+
 
     public function formation()
     {

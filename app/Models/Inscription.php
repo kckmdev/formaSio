@@ -16,6 +16,19 @@ class Inscription extends Model
         'formation_id',
     ];
 
+    //if a registration is deleted, increase the number of available places in the session dynamically
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($inscription) {
+            if ($inscription->session) {
+                $inscription->session->incrementAvailablePlaces();
+            }
+        });
+    }
+
+
     //relation avec utilisateur
     public function utilisateur()
     {
