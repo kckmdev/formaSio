@@ -20,14 +20,15 @@ class LoginController extends Controller
         //validation des champs
         $this->validate($request, [
             'email' => 'required|email',
-            'password' => 'required|min:6'
+            'password' => 'required'
         ]);
 
-        //tentative de connexion
-        if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
+        //essaie de connexion
+        if (!auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
+            Log::warning('Tentative de connexion échouée pour l\'email : ' . $request->email);
             return back()->withInput()->with('statut', 'Identifiants incorrects');
-
         }
+
         Log::info('Connexion réussie pour l\'email : ' . $request->email);
         //redirection user avec isUser
         if (auth()->user()->isUser()) {
@@ -35,13 +36,13 @@ class LoginController extends Controller
             return redirect()->route('user.dashboard')->with('statut', 'Vous êtes connecté en tant qu\'utilisateur');
         }
 
+
         //redirection admin avec isAdmin
         if (auth()->user()->isAdmin()) {
             Log::info('Connexion réussie pour l\'email : ' . $request->email);
             return redirect()->route('admin.dashboard')->with('status', 'Vous êtes connecté en tant qu\'administrateur');
         }
 
-        //function logout
 
     }
 

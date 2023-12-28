@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormationController;
 
 
 /**
@@ -44,6 +45,11 @@ use Illuminate\Support\Facades\Route;
  * - Utilisateurs authentifiés :
  *   - Déconnexion : POST /logout (nommée `user.logout`)
  *   - Profil : GET /profile (nommée `user.profile`)
+ *  - Formations : GET /formations (nommée `user.formations`)
+ *  - Inscription : GET /inscription (nommée `user.inscription`)
+ *  - Inscription : POST /inscription (nommée `user.inscription`)
+ *  - Inscription : POST /delete/{id} (nommée `user.delete`)
+ *  - Télécharger PDF : GET /telechargerPdf (nommée `user.telechargerPdf`)
  * - Utilisateurs invités :
  *   - Accueil : GET / (nommée `home`)
  *   - Connexion : GET /login
@@ -89,7 +95,14 @@ Route::group(['middleware' => ['auth', 'isUser'], 'prefix' => 'user'], function 
  */
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', 'Auth\LoginController@logout')->name('user.logout');
-    Route::get('/profile', 'UserController@show')->name('user.profile');
+    Route::get('/profil', 'ProfilController@show')->name('profil');
+    Route::get('/formations', [FormationController::class, 'index']);
+    Route::get('/inscription', 'InscriptionController@show')->name('inscription');
+    Route::post('/inscription', 'InscriptionController@create');
+    //delete a registration
+    Route::post('/delete/{id}', 'InscriptionController@delete')->name('delete');
+    Route::get('/telechargerPdf', 'FormationController@telechargerPdf')->name('telechargerPdf');
+
 });
 
 /**
