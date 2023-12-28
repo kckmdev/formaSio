@@ -1,6 +1,6 @@
 <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-3 text-white">
     <ul class="flex">
-        <li class="mr-6"><a href="/">Forma</a></li>
+        <li class="mr-6"><a href="/">Forma <span class="bg-blue-400 text-white rounded-md px-2 py-1 text-xs font-bold">SIO</span></a></li>
     </ul>
 
     <div class="flex justify-end">
