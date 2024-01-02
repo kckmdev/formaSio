@@ -16,7 +16,7 @@ class CreateFormationsTable extends Migration
         Schema::create('formations', function (Blueprint $table) {
             $table->id();
             $table->string('intitule');
-            $table->timestamp('duree');
+            $table->integer('duree'); // en minutes (1h = 60min)
             $table->integer('nb_places_max');
             $table->float('cout');
             $table->unsignedBigInteger('intervenant_id');

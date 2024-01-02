@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\CustomUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 class CustomUserFactory extends Factory
 {
@@ -21,8 +22,8 @@ class CustomUserFactory extends Factory
             'nom' => $this->faker->lastName,
             'prenom' => $this->faker->firstName,
             'telephone' => $this->faker->phoneNumber,
-            'email' => $this->faker->email,
-            'mot_de_passe' => $this->faker->password,
+            'email' => $this->faker->unique()->safeEmail,
+            'mot_de_passe' => 'password', // password
             'statut' => $this->faker->randomElement(['utilisateur', 'admin']),
         ];
     }

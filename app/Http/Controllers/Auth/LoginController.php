@@ -17,6 +17,8 @@ class LoginController extends Controller
     //methode login
     public function login(Request $request)
     {
+
+
         //validation des champs
         $this->validate($request, [
             'email' => 'required|email',
