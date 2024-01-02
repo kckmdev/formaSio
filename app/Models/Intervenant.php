@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Intervenant extends Model
 {
     use HasFactory;
+
+    protected $table = 'intervenants';
+
+    protected $primaryKey = 'id';
+
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'email',
+        'telephone',
+    ];
+
 }
