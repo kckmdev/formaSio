@@ -88,10 +88,14 @@ class FormationController extends Controller
     {
         $request->validate([
             'cout' => 'required|numeric',
+            'intitule' => 'required|string',
+            'nb_places_max' => 'required|numeric',
         ]);
 
         $formation = Formations::find($id);
         $formation->cout = $request->get('cout');
+        $formation->intitule = $request->get('intitule');
+        $formation->nb_places_max = $request->get('nb_places_max');
         $formation->save();
 
         return redirect()->route('formations.index')

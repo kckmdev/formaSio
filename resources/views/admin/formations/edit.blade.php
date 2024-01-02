@@ -12,19 +12,19 @@
                         @method('PUT')
 
                         <div class="mb-4">
-                            <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Titre</label>
-                            <input id="title" type="text" class="form-input border border-gray-300 rounded-md @error('title') border-red-500 @enderror" name="title" value="{{ old('title', $formation->intitule) }}" required autocomplete="title" autofocus style="padding: 0.5rem;">
+                            <label for="intitule" class="block text-gray-700 text-sm font-bold mb-2">Intitulé</label>
+                            <input id="intitule" type="text" class="form-input border border-gray-300 rounded-md @error('intitule') border-red-500 @enderror" name="intitule" value="{{ old('intitule', $formation->intitule) }}" required autocomplete="intitule" autofocus style="padding: 0.5rem;">
 
-                            @error('title')
+                            @error('intitule')
                                 <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div class="mb-4">
-                            <label for="place_max" class="block text-gray-700 text-sm font-bold mb-2">Place Maximum</label>
-                            <input id="place_max" type="number" class="form-input border border-gray-300 rounded-md @error('place_max') border-red-500 @enderror" name="nb_places_max" value="{{ old('nb_places_max', $formation->nb_places_max) }}" required autocomplete="place_max" style="padding: 0.5rem;">
+                            <label for="nb_places_max" class="block text-gray-700 text-sm font-bold mb-2">Place Maximum</label>
+                            <input id="nb_places_max" type="number" class="form-input border border-gray-300 rounded-md @error('nb_places_max') border-red-500 @enderror" name="nb_places_max" value="{{ old('nb_places_max', $formation->nb_places_max) }}" required autocomplete="nb_places_max" style="padding: 0.5rem;">
 
-                            @error('place_max')
+                            @error('nb_places_max')
                                 <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                             @enderror
                         </div>
@@ -46,6 +46,13 @@
                                 <a href="{{ route('formations.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded font-medium">
                                     Retour
                                 </a>
+                                <form method="POST" action="{{ route('formations.destroy', $formation->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded font-medium ml-2">
+                                        Supprimer la formation
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </form>
