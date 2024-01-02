@@ -40,5 +40,15 @@
                 backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
             }).showToast();
         @endif
+
+        @if(Session::has('warning'))
+            Toastify({
+                text: "{{ Session::get('warning') }}",
+                duration: 3000,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: 'right', // `left`, `center` or `right`
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+            }).showToast();
     </script>
 </body>
