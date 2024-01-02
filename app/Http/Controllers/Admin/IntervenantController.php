@@ -15,9 +15,22 @@ class IntervenantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request  $request)
     {
-        //
+        // get all intervenants
+        $intervenants = Intervenant::all();
+
+        $validatedData = $request->validate([
+            'nb_lignes' => 'numeric|min:1',
+        ]);
+
+        $nb_lignes = $validatedData['nb_lignes'] ?? 5;
+
+        // make pagination
+        $intervenants = Intervenant::paginate($nb_lignes);
+        // load the view and pass the intervenants
+
+        return view('admin.intervenants.index', compact('intervenants', 'nb_lignes'));
     }
 
     /**
@@ -26,7 +39,7 @@ class IntervenantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {  
+    {
         //placeholder for the form (faker)
         $faker = Factory::create('fr_FR');
         $placeholder = (object) [
@@ -65,10 +78,10 @@ class IntervenantController extends Controller
         $intervenant->save();
 
         // Redirect to the index page with a success message
-        return redirect()->route('intervenants.index')->with('success', 'Intervenant créé avec succès.');
+        return redirect()
+            ->route('intervenants.index')
+            ->with('success', 'Intervenant créé avec succès.');
     }
-
-
 
     /**
      * Display the specified resource.
@@ -89,7 +102,8 @@ class IntervenantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $intervenant = Intervenant::findOrFail($id);
+        return view('admin.intervenants.edit', compact('intervenant'));
     }
 
     /**
@@ -101,7 +115,30 @@ class IntervenantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validate the request data
+        $validatedData = $request->validate([
+            'prenom' => 'required|string',
+            'nom' => 'required|string',
+            'email' => 'required|email',
+            'telephone' => 'required|string',
+        ]);
+
+        // Find the intervenant by id
+        $intervenant = Intervenant::findOrFail($id);
+
+        // Update the intervenant
+        $intervenant->prenom = $validatedData['prenom'];
+        $intervenant->nom = $validatedData['nom'];
+        $intervenant->email = $validatedData['email'];
+        $intervenant->telephone = $validatedData['telephone'];
+
+        // Save the intervenant
+        $intervenant->save();
+
+        // Redirect to the index page with a success message
+        return redirect()
+            ->route('intervenants.index')
+            ->with('success', 'Intervenant mis à jour avec succès.');
     }
 
     /**
@@ -112,6 +149,15 @@ class IntervenantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Find the intervenant by id
+        $intervenant = Intervenant::findOrFail($id);
+
+        // Delete the intervenant
+        $intervenant->delete();
+
+        // Redirect to the index page with a success message
+        return redirect()
+            ->route('intervenants.index')
+            ->with('success', 'Intervenant supprimé avec succès.');
     }
 }
