@@ -73,11 +73,12 @@ class FormationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $formation = Formations::findOrFail($id);
+        return view("admin.formations.edit", compact("formation"));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified formation in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -85,7 +86,16 @@ class FormationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'cout' => 'required|numeric',
+        ]);
+
+        $formation = Formations::find($id);
+        $formation->cout = $request->get('cout');
+        $formation->save();
+
+        return redirect()->route('formations.index')
+                         ->with('success','La formation a bien été modifiée');
     }
 
     /**
@@ -96,6 +106,13 @@ class FormationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $formation = Formations::find($id);
+        $formation->delete();
+
+        return redirect()->route('formations.index')
+                         ->with('success','La formation a bien été supprimée');
     }
+
 }
+
+?>
