@@ -7,6 +7,8 @@
 
 ## Côté admin
 - [x] 1. Créer une formation, modifier une formation, supprimer une formation, dupliquer une formation
+  - [ ] **REFACTORISATION EN COURS**
+      - [ ] Liaison entre les intervenants et les formations ainsi que les sessions
   - [x] 1.1 Créer une formation
   - [x] 1.2 Modifier une formation
   - [x] 1.3 Supprimer une formation
