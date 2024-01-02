@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inscription;
-use App\Models\Formations;
+use App\Models\Formation;
 use App\Models\Domaine;
 
 class InscriptionController extends Controller

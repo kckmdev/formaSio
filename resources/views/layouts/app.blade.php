@@ -50,5 +50,6 @@
                 position: 'right', // `left`, `center` or `right`
                 backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
             }).showToast();
+        @endif
     </script>
 </body>

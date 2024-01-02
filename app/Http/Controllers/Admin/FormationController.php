@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Formations;
+use App\Models\Formation;
+use App\Models\Intervenant;
 use Faker\Factory;
 use App\Models\Intervenants;
 
@@ -56,7 +57,7 @@ class FormationController extends Controller
         // check if exists a lest one intervenant
         // ...
 
-        $intervenants = Intervena::count();
+        $intervenants = Intervenant::count();
         if ($intervenants == 0) {
             return redirect()
                 ->route('intervenants.create')

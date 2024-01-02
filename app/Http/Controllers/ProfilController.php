@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Formations;
+use App\Models\Formation;
 use App\Models\Inscription;
 use Illuminate\Http\Request;
 
