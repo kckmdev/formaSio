@@ -68,7 +68,13 @@ class FormationController extends Controller
             'intitule' => 'required|string|max:255',
             'nb_places_max' => 'required|integer',
             'cout' => 'required|numeric',
+            'duree' => 'required|date_format:H:i',
         ]);
+
+        // transform the duree into minutes
+        $duree = explode(':', $data['duree']);
+        $data['duree'] = $duree[0] * 60 + $duree[1];
+        
 
         // Create a new formation with the validated data
         $formation = Formations::create($data);
