@@ -91,7 +91,7 @@ class FormationController extends Controller
             'intitule' => 'required|string',
             'nb_places_max' => 'required|numeric',
         ]);
-
+        
         $formation = Formations::find($id);
         $formation->cout = $request->get('cout');
         $formation->intitule = $request->get('intitule');
@@ -115,6 +115,28 @@ class FormationController extends Controller
 
         return redirect()->route('formations.index')
                          ->with('success','La formation a bien été supprimée');
+    }
+
+
+    /**
+     * Duplicate a formation.
+     *
+     * @param int $id The ID of the formation to duplicate.
+     * @return \Illuminate\Http\Response
+     */
+    public function duplicate($id)
+    {
+        // Récupérer la formation à dupliquer
+        $originalFormation = Formations::findOrFail($id);
+
+        // Créer une nouvelle instance de formation avec les mêmes données
+        $newFormation = $originalFormation->replicate();
+
+        // Sauvegarder la nouvelle formation
+        $newFormation->save();
+
+        // Rediriger vers la page d'index avec un message de succès
+        return redirect()->route('formations.index')->with('success', 'Formation dupliquée avec succès.');
     }
 
 }

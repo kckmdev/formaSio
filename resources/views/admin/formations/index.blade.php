@@ -60,6 +60,10 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="text-red-500 hover:text-red-700 font-bold">Supprimer</button>
                                                 </form>
+                                                <form action="{{ route('formations.duplicate', $formation->id) }}" method="POST" class="inline">
+                                                    @csrf
+                                                    <button type="submit" class="text-green-500 hover:text-green-700 font-bold">Dupliquer</button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
