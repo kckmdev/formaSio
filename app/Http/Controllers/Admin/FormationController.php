@@ -57,15 +57,15 @@ class FormationController extends Controller
         // check if exists a lest one intervenant
         // ...
 
-        $intervenants = Intervenant::count();
-        if ($intervenants == 0) {
+        $intervenants = Intervenant::all(['id', 'prenom', 'nom']);
+        if ($intervenants->isEmpty()) {
             return redirect()
                 ->route('intervenants.create')
                 ->with('error', 'Vous devez créer au moins un intervenant avant de créer une formation.');
         }
 
         // load the view
-        return view('admin.formations.create', compact('placeholder'));
+        return view('admin.formations.create', compact('placeholder', 'intervenants'));
     }
 
     /**
@@ -76,17 +76,22 @@ class FormationController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->intervenant);
         $data = $request->validate([
             'intitule' => 'required|string|max:255',
             'nb_places_max' => 'required|integer',
             'cout' => 'required|numeric',
             'duree' => 'required|date_format:H:i',
+            'intervenant' => 'required|int',
         ]);
 
         // transform the duree into minutes
         $duree = explode(':', $data['duree']);
         $data['duree'] = $duree[0] * 60 + $duree[1];
-        
+            
+        // attach the intervenant to the formation
+        $intervenant = Intervenant::findorFail($data['intervenant']);
+        $data['intervenant_id'] = $intervenant->id;
 
         // Create a new formation with the validated data
         $formation = Formation::create($data);

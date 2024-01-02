@@ -44,6 +44,28 @@
                                 <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                             @enderror
                         </div>
+                        <div class="mb-4">
+                            <label for="intervenant" class="block text-gray-700 text-sm font-bold mb-2">Intervenant</label>
+                            <div class="relative">
+                                <select id="intervenant" name="intervenant"
+                                    class="block appearance-none bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('intervenant') border-red-500 @enderror"
+                                    multiple="false"
+                                    required>
+                                    <option value="">Choisir un intervenant</option>
+                                    @foreach($intervenants as $intervenant)
+                                        <option value="{{ $intervenant->id }}">{{ $intervenant->prenom }} {{ $intervenant->nom }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path d="M10 12l-6-6h12l-6 6z" />
+                                    </svg>
+                                </div>
+                                @error('intervenant')
+                                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="mb-4">
                             <label for="duree" class="block text-gray-700 text-sm font-bold mb-2">Durée</label>
