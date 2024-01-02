@@ -2,8 +2,8 @@
 [Voir le wiki](https://github.com/kckmdev/formaSio/wiki)
 
 ## Côté client 
-- [ ] 5. revoir le jeu de tests
-- [ ] 6. revoir les salariés et bénévoles
+- [ ] 5. Revoir le jeu de tests
+- [ ] 6. Revoir les salariés et bénévoles
 
 ## Côté admin
 - [ ] 1. Créer une formation, modifier une formation, supprimer une formation
