@@ -8,7 +8,9 @@
 ## Côté admin
 - [x] 1. Créer une formation, modifier une formation, supprimer une formation, dupliquer une formation
   - [ ] **REFACTORISATION EN COURS**
-      - [ ] Liaison entre les intervenants et les formations ainsi que les sessions
+      - [ ] Liaison entre les intervenants (*en cours [ici](https://github.com/kckmdev/formaSio/commit/34e5e5fef9743dffc0a7c30e64099480ae116802)*)
+      - [ ] Liaison entre les sessions
+      - [ ] Liaison entre les domaines
   - [x] 1.1 Créer une formation
   - [x] 1.2 Modifier une formation
   - [x] 1.3 Supprimer une formation
