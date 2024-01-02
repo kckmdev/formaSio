@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Formations;
+use Faker\Factory;
 
 class FormationController extends Controller
 {
@@ -16,10 +17,10 @@ class FormationController extends Controller
     public function index(Request $request)
     {
         // get all formations and join intervenants, domaines and sessions
-        $formations = Formations::with("sessions")->get();
-        
+        $formations = Formations::with('sessions')->get();
+
         $validatedData = $request->validate([
-            'nb_lignes' => 'numeric|min:1'
+            'nb_lignes' => 'numeric|min:1',
         ]);
 
         $nb_lignes = $validatedData['nb_lignes'] ?? 5;
@@ -28,7 +29,7 @@ class FormationController extends Controller
         $formations = Formations::paginate($nb_lignes);
         // load the view and pass the formations
 
-        return view("admin.formations.index", compact("formations", "nb_lignes"));
+        return view('admin.formations.index', compact('formations', 'nb_lignes'));
     }
 
     /**
@@ -38,9 +39,21 @@ class FormationController extends Controller
      */
     public function create()
     {
+        //placeholder for the form
+        $minutes = ['00', '15', '30', '45'];
+        $randomMinute = $minutes[array_rand($minutes)];
+
+        $duree = str_pad(Factory::create()->numberBetween($min = 1, $max = 4), 2, '0', STR_PAD_LEFT) . ':' . $randomMinute;
+        $placeholder = (object) [
+            'intitule' => Factory::create()->sentence($nbWords = 3, $variableNbWords = true),
+            'nb_places_max' => Factory::create()->numberBetween($min = 1, $max = 100),
+            'cout' => Factory::create()->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 1000),
+
+            'duree' => $duree,
+        ];
 
         // load the view
-        return ("admin.formations.create");
+        return view('admin.formations.create', compact('placeholder'));
     }
 
     /**
@@ -51,7 +64,17 @@ class FormationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'intitule' => 'required|string|max:255',
+            'nb_places_max' => 'required|integer',
+            'cout' => 'required|numeric',
+        ]);
+
+        // Create a new formation with the validated data
+        $formation = Formations::create($data);
+
+        // Redirect to the formations index page
+        return redirect()->route('formations.index');
     }
 
     /**
@@ -74,7 +97,7 @@ class FormationController extends Controller
     public function edit($id)
     {
         $formation = Formations::findOrFail($id);
-        return view("admin.formations.edit", compact("formation"));
+        return view('admin.formations.edit', compact('formation'));
     }
 
     /**
@@ -91,15 +114,16 @@ class FormationController extends Controller
             'intitule' => 'required|string',
             'nb_places_max' => 'required|numeric',
         ]);
-        
+
         $formation = Formations::find($id);
         $formation->cout = $request->get('cout');
         $formation->intitule = $request->get('intitule');
         $formation->nb_places_max = $request->get('nb_places_max');
         $formation->save();
 
-        return redirect()->route('formations.index')
-                         ->with('success','La formation a bien été modifiée');
+        return redirect()
+            ->route('formations.index')
+            ->with('success', 'La formation a bien été modifiée');
     }
 
     /**
@@ -113,10 +137,10 @@ class FormationController extends Controller
         $formation = Formations::find($id);
         $formation->delete();
 
-        return redirect()->route('formations.index')
-                         ->with('success','La formation a bien été supprimée');
+        return redirect()
+            ->route('formations.index')
+            ->with('success', 'La formation a bien été supprimée');
     }
-
 
     /**
      * Duplicate a formation.
@@ -136,9 +160,10 @@ class FormationController extends Controller
         $newFormation->save();
 
         // Rediriger vers la page d'index avec un message de succès
-        return redirect()->route('formations.index')->with('success', 'Formation dupliquée avec succès.');
+        return redirect()
+            ->route('formations.index')
+            ->with('success', 'Formation dupliquée avec succès.');
     }
-
 }
 
 ?>
