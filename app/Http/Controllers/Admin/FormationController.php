@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Formations;
 use Faker\Factory;
+use App\Models\Intervenants;
 
 class FormationController extends Controller
 {
@@ -52,6 +53,16 @@ class FormationController extends Controller
             'duree' => $duree,
         ];
 
+        // check if exists a lest one intervenant
+        // ...
+
+        $intervenants = Intervena::count();
+        if ($intervenants == 0) {
+            return redirect()
+                ->route('intervenants.create')
+                ->with('error', 'Vous devez créer au moins un intervenant avant de créer une formation.');
+        }
+
         // load the view
         return view('admin.formations.create', compact('placeholder'));
     }
@@ -79,8 +90,16 @@ class FormationController extends Controller
         // Create a new formation with the validated data
         $formation = Formations::create($data);
 
+        // check if the formation was created
+        if (!$formation) {
+            return redirect()
+                ->route('formations.create')
+                ->with('error', 'Une erreur est survenue lors de la création de la formation.');
+        }
+
         // Redirect to the formations index page
-        return redirect()->route('formations.index');
+        return redirect()->route('formations.index')
+            ->with('success', 'La formation a bien été créée.');
     }
 
     /**
