@@ -64,7 +64,7 @@
                     <form method="POST" action="{{ route('formations.destroy', $formation->id) }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded font-medium ml-2">
+                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette formation ?')" class="bg-red-500 text-white px-4 py-2 rounded font-medium mt-2">
                             Supprimer
                         </button>
                     </form>
