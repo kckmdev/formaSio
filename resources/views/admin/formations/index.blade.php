@@ -55,7 +55,7 @@
                                         <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
                                             <div class="flex gap-2 justify-center">
                                                 <a href="{{ route('formations.edit', $formation->id) }}" class="text-blue-500 hover:text-blue-700 font-bold">Modifier</a>
-                                                <form action="{{ route('formations.destroy', $formation->id) }}" method="POST" class="inline">
+                                                <form action="{{ route('formations.destroy', $formation->id) }}" method="POST" class="inline" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette formation ?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="text-red-500 hover:text-red-700 font-bold">Supprimer</button>
