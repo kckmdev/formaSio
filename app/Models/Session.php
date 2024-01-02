@@ -28,7 +28,7 @@ class Session extends Model
 
     public function formation()
     {
-        return $this->belongsTo(Formations::class, 'formation_id');
+        return $this->belongsTo(Formation::class, 'formation_id');
     }
 
     public function inscriptions()

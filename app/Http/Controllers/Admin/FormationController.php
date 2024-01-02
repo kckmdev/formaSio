@@ -18,7 +18,7 @@ class FormationController extends Controller
     public function index(Request $request)
     {
         // get all formations and join intervenants, domaines and sessions
-        $formations = Formations::with('sessions')->get();
+        $formations = Formation::with('sessions')->get();
 
         $validatedData = $request->validate([
             'nb_lignes' => 'numeric|min:1',
@@ -27,7 +27,7 @@ class FormationController extends Controller
         $nb_lignes = $validatedData['nb_lignes'] ?? 5;
 
         // make pagination
-        $formations = Formations::paginate($nb_lignes);
+        $formations = Formation::paginate($nb_lignes);
         // load the view and pass the formations
 
         return view('admin.formations.index', compact('formations', 'nb_lignes'));
@@ -88,7 +88,7 @@ class FormationController extends Controller
         
 
         // Create a new formation with the validated data
-        $formation = Formations::create($data);
+        $formation = Formation::create($data);
 
         // check if the formation was created
         if (!$formation) {
@@ -121,7 +121,7 @@ class FormationController extends Controller
      */
     public function edit($id)
     {
-        $formation = Formations::findOrFail($id);
+        $formation = Formation::findOrFail($id);
         return view('admin.formations.edit', compact('formation'));
     }
 
@@ -140,7 +140,7 @@ class FormationController extends Controller
             'nb_places_max' => 'required|numeric',
         ]);
 
-        $formation = Formations::find($id);
+        $formation = Formation::find($id);
         $formation->cout = $request->get('cout');
         $formation->intitule = $request->get('intitule');
         $formation->nb_places_max = $request->get('nb_places_max');
@@ -159,7 +159,7 @@ class FormationController extends Controller
      */
     public function destroy($id)
     {
-        $formation = Formations::find($id);
+        $formation = Formation::find($id);
         $formation->delete();
 
         return redirect()
@@ -176,7 +176,7 @@ class FormationController extends Controller
     public function duplicate($id)
     {
         // Récupérer la formation à dupliquer
-        $originalFormation = Formations::findOrFail($id);
+        $originalFormation = Formation::findOrFail($id);
 
         // Créer une nouvelle instance de formation avec les mêmes données
         $newFormation = $originalFormation->replicate();

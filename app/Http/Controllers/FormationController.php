@@ -11,7 +11,7 @@ class FormationController extends Controller
     //controller 
     public function index()
     {
-        $formations = Formations::with(['domaine', 'sessions'])->get();
+        $formations = Formation::with(['domaine', 'sessions'])->get();
         $groupedFormations = $formations->groupBy('domaine.libelle');
 
         return view('formations', ['groupedFormations' => $groupedFormations]);
