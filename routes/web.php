@@ -78,6 +78,11 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
 
     // Routes de ressources pour la gestion des sessions
     Route::resource('/sessions', 'Admin\SessionController');
+
+    Route::resource('/inscriptions', 'Admin\InscriptionController');
+
+    // Routes de ressources pour la gestion des utilisateurs
+    Route::resource('/users', 'Admin\UserController');
 });
 
 /**
@@ -88,6 +93,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
 Route::group(['middleware' => ['auth', 'isUser'], 'prefix' => 'user'], function () {
     Route::get('/', 'MainController@home')->name('user.dashboard');
 });
+
 
 /**
  * Routes pour les utilisateurs authentifiés.

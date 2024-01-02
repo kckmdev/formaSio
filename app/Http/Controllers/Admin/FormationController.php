@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Formations;
 
 class FormationController extends Controller
 {
@@ -12,9 +13,22 @@ class FormationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // get all formations and join intervenants, domaines and sessions
+        $formations = Formations::with("sessions")->get();
+        
+        $validatedData = $request->validate([
+            'nb_lignes' => 'numeric|min:1'
+        ]);
+
+        $nb_lignes = $validatedData['nb_lignes'] ?? 5;
+
+        // make pagination
+        $formations = Formations::paginate($nb_lignes);
+        // load the view and pass the formations
+
+        return view("admin.formations.index", compact("formations", "nb_lignes"));
     }
 
     /**
@@ -24,7 +38,9 @@ class FormationController extends Controller
      */
     public function create()
     {
-        //
+
+        // load the view
+        return ("admin.formations.create");
     }
 
     /**
