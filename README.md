@@ -7,11 +7,18 @@
 
 ## Côté admin
 - [ ] 1. Créer une formation, modifier une formation, supprimer une formation
+  - [ ] 1.1 Créer une formation
+  - [ ] 1.2 Modifier une formation
+  - [ ] 1.3 Supprimer une formation
 - [ ] 2. Gérer les profils et accès des utilisateurs (bénévoles/salariés) pour les inscriptions en ligne
 - [ ] 3. Valider manuellement les inscriptions faites en ligne (changer le statut de l'inscription de "en cours" à "validé")
 - [ ] 4. Imprimer une liste des inscrits à une formation (une semaine avant la formation) (au format PDF)
 - [ ] 5. Historiser les participations en fin d'année (au format XML)
 - [ ] 6. Gérer les intervenants (ajouter, modifier, supprimer)
+  - [ ] 6.1 Ajouter un intervenant
+  - [ ] 6.2 Modifier un intervenant
+  - [ ] 6.3 Supprimer un intervenant
+
 
 # Les routes
 
