@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Formation;
 use App\Models\Intervenant;
 use Faker\Factory;
-use App\Models\Intervenants;
+use App\Models\Domaine;
 
 class FormationController extends Controller
 {
@@ -64,8 +64,15 @@ class FormationController extends Controller
                 ->with('error', 'Vous devez créer au moins un intervenant avant de créer une formation.');
         }
 
+        $domaines = Domaine::all(['id', 'libelle']);
+        if ($domaines->isEmpty()) {
+            return redirect()
+                ->route('domaines.create')
+                ->with('error', 'Vous devez créer au moins un domaine avant de créer une formation.');
+        }
+
         // load the view
-        return view('admin.formations.create', compact('placeholder', 'intervenants'));
+        return view('admin.formations.create', compact('placeholder', 'intervenants', 'domaines'));
     }
 
     /**
@@ -83,6 +90,7 @@ class FormationController extends Controller
             'cout' => 'required|numeric',
             'duree' => 'required|date_format:H:i',
             'intervenant' => 'required|int',
+            'domaine' => 'required|int',
         ]);
 
         // transform the duree into minutes
@@ -92,6 +100,10 @@ class FormationController extends Controller
         // attach the intervenant to the formation
         $intervenant = Intervenant::findorFail($data['intervenant']);
         $data['intervenant_id'] = $intervenant->id;
+
+        // attach the domaine to the formation
+        $domaine = Domaine::findorFail($data['domaine']);
+        $data['domaine_id'] = $domaine->id;
 
         // Create a new formation with the validated data
         $formation = Formation::create($data);
