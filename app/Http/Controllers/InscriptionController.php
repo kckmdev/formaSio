@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inscription;
-use App\Models\Formations;
+use App\Models\Formation;
 use App\Models\Domaine;
 
 class InscriptionController extends Controller
@@ -15,7 +15,7 @@ class InscriptionController extends Controller
         $url = $request->fullUrl();
         $query = parse_url($url, PHP_URL_QUERY);
         $id = $query;
-        $formation = Formations::find($id);
+        $formation = Formation::find($id);
         return view('inscription', ['formation' => $formation], ['domaines' => Domaine::all()]);
     }
 
@@ -48,7 +48,7 @@ class InscriptionController extends Controller
         }
         //check if user has more than 2 registrations in the same domain
         $session = $request->input('session');
-        $formation = Formations::find($session);
+        $formation = Formation::find($session);
         $domaine = $formation->domaine;
         $domaine_id = $domaine->id;
 

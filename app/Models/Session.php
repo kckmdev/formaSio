@@ -13,6 +13,12 @@ class Session extends Model
         'date' => 'datetime',
     ];
 
+    protected $fillable = [
+        'date',
+        'nb_places_restantes',
+        'formation_id',
+    ];
+
     // function to increase the number of available places in the session if a registration is deleted
     public function incrementAvailablePlaces()
     {
@@ -28,7 +34,7 @@ class Session extends Model
 
     public function formation()
     {
-        return $this->belongsTo(Formations::class, 'formation_id');
+        return $this->belongsTo(Formation::class, 'formation_id');
     }
 
     public function inscriptions()

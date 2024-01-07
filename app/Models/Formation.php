@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Formations extends Model
+class Formation extends Model
 {
     use HasFactory;
 
@@ -47,7 +47,7 @@ class Formations extends Model
     public function show($formationId)
 {
     // Récupérez la formation en fonction de $formationId depuis la base de données
-    $formation = Formations::findOrFail($formationId);
+    $formation = Formation::findOrFail($formationId);
 
     // Passez la formation à la vue
     return view('inscription', ['formation' => $formation]);

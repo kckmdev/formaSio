@@ -3,6 +3,7 @@
 use App\Models\CustomUser;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,18 +19,18 @@ class DatabaseSeeder extends Seeder
             'nom' => 'Martin',
             'prenom' => 'Alice',
             'telephone' => '0606060606',
-            'email' => 'alice@gmail.com',
-            'mot_de_passe' => "mdpmdpmdp",
+            'email' => 'alice.martin@utilisateur.com',
+            'mot_de_passe' => 'motdepasse456', 
             'statut' => 'utilisateur',
         ]);
 
         // Ajouter un utilisateur spécifique (admin)
         CustomUser::create([
             'nom' => 'Jean',
-            'prenom' => 'Bob',
+            'prenom' => 'Dupont',
             'telephone' => '0606060606',
-            'email' => 'bob@gmail.com',
-            'mot_de_passe' => "mdpmdpmdp",
+            'email' => 'jean.dupont@admin.com',
+            'mot_de_passe' => 'motdepasse456',
             'statut' => 'admin',
         ]);
 

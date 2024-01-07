@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Formations;
+use App\Models\Formation;
 use Illuminate\Support\Facades\Response;
 
 class FormationController extends Controller
@@ -11,7 +11,7 @@ class FormationController extends Controller
     //controller 
     public function index()
     {
-        $formations = Formations::with(['domaine', 'sessions'])->get();
+        $formations = Formation::with(['domaine', 'sessions'])->get();
         $groupedFormations = $formations->groupBy('domaine.libelle');
 
         return view('formations', ['groupedFormations' => $groupedFormations]);

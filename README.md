@@ -1,9 +1,40 @@
 # FORMA MISSION 2
 [Voir le wiki](https://github.com/kckmdev/formaSio/wiki)
 
-## reste a faire côté client 
-- [ ] 5. revoir le jeu de tests
-- [ ] 6. revoir les salariés et bénévoles
+## Côté client 
+- [ ] 5. Revoir le jeu de tests
+- [ ] 6. Revoir les salariés et bénévoles
+
+## Côté admin
+- [x] 1. Créer une formation, modifier une formation, supprimer une formation, dupliquer une formation
+  - [ ] **REFACTORISATION EN COURS**
+      - [ ] Liaison entre les intervenants (*en cours [ici](https://github.com/kckmdev/formaSio/commit/34e5e5fef9743dffc0a7c30e64099480ae116802)*)
+      - [ ] Liaison entre les sessions
+      - [ ] Liaison entre les domaines
+  - [x] 1.1 Créer une formation
+  - [x] 1.2 Modifier une formation
+  - [x] 1.3 Supprimer une formation
+  - [x] 1.4 Afficher la liste des formations dans un tableau
+  - [x] 1.5 Dupliquer une formation
+- [ ] 2. Gérer les profils et accès des utilisateurs (bénévoles/salariés) pour les inscriptions en ligne
+- [ ] 3. Valider manuellement les inscriptions faites en ligne (changer le statut de l'inscription de "en cours" à "validé")
+- [ ] 4. Imprimer une liste des inscrits à une formation (une semaine avant la formation) (au format PDF)
+- [ ] 5. Historiser les participations en fin d'année (au format XML)
+- [x] 6. Gérer les intervenants (ajouter, modifier, supprimer)
+  - [x] 6.1 Ajouter un intervenant
+  - [x] 6.2 Modifier un intervenant
+  - [x] 6.3 Supprimer un intervenant
+- [ ] 7. Gérer les sessions
+  - [ ] 7.1 Créer une session
+  - [ ] 7.2 Modifier une session
+  - [ ] 7.3 Supprimer une session
+  - [ ] 7.4 Afficher la liste des sessions
+  - [ ] 7.5 Assigner des intervenants aux sessions
+- [x] 8. Gérer les domaines
+  - [x] 8.1 Ajouter un domaine
+  - [x] 8.2 Modifier un domaine
+  - [x] 8.3 Supprimer un domaine
+  - [x] 8.4 Lier des formations à des domaines spécifiques
 
 ## reste a faire côté admin 
 - [ ] 1. Créer une formation , modifier une formation supprimer une formation
