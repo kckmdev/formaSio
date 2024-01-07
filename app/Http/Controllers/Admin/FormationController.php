@@ -19,7 +19,7 @@ class FormationController extends Controller
     public function index(Request $request)
     {
         // get all formations and join intervenants, domaines and sessions
-        $formations = Formation::with('sessions')->get();
+        $formations = Formation::with('intervenant', 'domaine', 'sessions')->get();
 
         $validatedData = $request->validate([
             'nb_lignes' => 'numeric|min:1',

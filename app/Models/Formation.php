@@ -38,6 +38,12 @@ class Formation extends Model
         return $this->hasMany(Session::class, 'formation_id');
     }
 
+    public function intervenant()
+    {
+        return $this->belongsTo(Intervenant::class);
+    }
+
+
     // Exemple d'un accesseur pour formater le coût
     public function getCoutFormattedAttribute()
     {
