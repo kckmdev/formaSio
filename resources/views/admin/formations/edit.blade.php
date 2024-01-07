@@ -48,7 +48,26 @@
                             @enderror
                         </div>
 
+                        <div class="mb-4">
+                            <label for="intervenant" class="block text-gray-700 text-sm font-bold mb-2">Intervenant</label>
+                            <select id="intervenant" name="intervenant" required>
+                                <option value="">Choisir un intervenant</option>
+                                @foreach ($intervenants as $intervenant)
+                                    <option value="{{ $intervenant->id }}">{{ $intervenant->prenom }}
+                                        {{ $intervenant->nom }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
+                        <div class="mb-4">
+                            <label for="domaine" class="block text-gray-700 text-sm font-bold mb-2">Domaine</label>
+                            <select id="domaine" name="domaine" required>
+                                <option value="">Choisir un domaine</option>
+                                @foreach ($domaines as $domaine)
+                                    <option value="{{ $domaine->id }}">{{ $domaine->libelle }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div>
                             <div class="flex">
                                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded font-medium mr-2">
@@ -64,7 +83,9 @@
                     <form method="POST" action="{{ route('formations.destroy', $formation->id) }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette formation ?')" class="bg-red-500 text-white px-4 py-2 rounded font-medium mt-2">
+                        <button type="submit"
+                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette formation ?')"
+                            class="bg-red-500 text-white px-4 py-2 rounded font-medium mt-2">
                             Supprimer
                         </button>
                     </form>

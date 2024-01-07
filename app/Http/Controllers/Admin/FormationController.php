@@ -137,10 +137,12 @@ class FormationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Formation $formation)
     {
-        $formation = Formation::findOrFail($id);
-        return view('admin.formations.edit', compact('formation'));
+        $intervenants = Intervenant::all();
+        $domaines = Domaine::all();
+    
+        return view('admin.formations.edit', compact('formation', 'intervenants', 'domaines'));
     }
 
     /**
@@ -153,6 +155,8 @@ class FormationController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'intervenant' => 'required',
+            'domaine' => 'required',
             'cout' => 'required|numeric',
             'intitule' => 'required|string',
             'nb_places_max' => 'required|numeric',
@@ -162,6 +166,8 @@ class FormationController extends Controller
         $formation->cout = $request->get('cout');
         $formation->intitule = $request->get('intitule');
         $formation->nb_places_max = $request->get('nb_places_max');
+        $formation->intervenant_id = $request->get('intervenant');
+        $formation->domaine_id = $request->get('domaine');
         $formation->save();
 
         return redirect()
