@@ -4,32 +4,34 @@
 
 @section('content')
     <!-- Presentation -->
-    <div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-md w-full space-y-8">
+    @guest
+        <div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-md w-full space-y-8">
 
-            <div>
-                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                    Forma
-                </h2>
-                <p class="mt-2 text-center text-sm text-gray-600">
-                    Bienvenue sur Forma, le site de gestion des formations pour les salariés et bénévoles des
-                    associations affiliées à la maison régionale des sports
-                    de Lorraine..
-                </p>
-            </div>
+                <div>
+                    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                        Forma
+                    </h2>
+                    <p class="mt-2 text-center text-sm text-gray-600">
+                        Bienvenue sur Forma, le site de gestion des formations pour les salariés et bénévoles des
+                        associations affiliées à la maison régionale des sports
+                        de Lorraine..
+                    </p>
+                </div>
 
-            <div class="mt-8 space-y-6">
-                <div class="rounded-md shadow-sm -space-y-px">
-                    <a href="/login"
-                        class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 md:py-2 md:text-lg md:px-10">
-                        Connexion
-                    </a>
+                <div class="mt-8 space-y-6">
+                    <div class="rounded-md shadow-sm -space-y-px">
+                        <a href="/login"
+                            class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 md:py-2 md:text-lg md:px-10">
+                            Connexion
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endguest
     <!-- cards 3 max sur une ligne-->
-    <div class="flex flex-wrap justify-center">
+    <div class="flex flex-wrap justify-center mt-10">
         <div class="max-w-sm rounded overflow-hidden shadow-lg m-2 flex flex-col justify-between">
             <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">Gestion et Leadership</div>
