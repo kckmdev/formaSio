@@ -50,23 +50,52 @@
 
                         <div class="mb-4">
                             <label for="intervenant" class="block text-gray-700 text-sm font-bold mb-2">Intervenant</label>
-                            <select id="intervenant" name="intervenant" required>
-                                <option value="">Choisir un intervenant</option>
-                                @foreach ($intervenants as $intervenant)
-                                    <option value="{{ $intervenant->id }}">{{ $intervenant->prenom }}
-                                        {{ $intervenant->nom }}</option>
-                                @endforeach
-                            </select>
+                            <div class="relative">
+                                <select id="intervenant" name="intervenant"
+                                    class="block appearance-none bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('intervenant') border-red-500 @enderror"
+                                    required>
+                                    <option value="">Choisir un intervenant</option>
+                                    @foreach ($intervenants as $intervenant)
+                                        <option {{ $intervenant->id == $formation->intervenant_id ? 'selected="true"' : '' }}}
+                                            value="{{ $intervenant->id }}">{{ $intervenant->prenom }}
+                                            {{ $intervenant->nom }}</option>
+                                    @endforeach
+                                </select>
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path d="M10 12l-6-6h12l-6 6z" />
+                                    </svg>
+                                </div>
+                                @error('intervenant')
+                                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
-
                         <div class="mb-4">
                             <label for="domaine" class="block text-gray-700 text-sm font-bold mb-2">Domaine</label>
-                            <select id="domaine" name="domaine" required>
-                                <option value="">Choisir un domaine</option>
-                                @foreach ($domaines as $domaine)
-                                    <option value="{{ $domaine->id }}">{{ $domaine->libelle }}</option>
-                                @endforeach
-                            </select>
+                            <div class="relative">
+                                <select
+                                    class="block appearance-none bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('domaine') border-red-500 @enderror"
+                                    id="domaine" name="domaine" required>
+                                    <option value="">Choisir un domaine</option>
+                                    @foreach ($domaines as $domaine)
+                                        <option {{ $domaine->id == $formation->domaine_id ? 'selected="true"' : '' }}}
+                                            value="{{ $domaine->id }}">{{ $domaine->libelle }}</option>
+                                    @endforeach
+                                </select>
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path d="M10 12l-6-6h12l-6 6z" />
+                                    </svg>
+                                </div>
+                                @error('domaine')
+                                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
                         <div>
                             <div class="flex">

@@ -41,6 +41,8 @@
                                     <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Nombre de sessions</th>
                                     <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Place Maximum</th>
                                     <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Prix</th>
+                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Domaine</th>
+                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Intervenant</th>
                                     <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -52,6 +54,8 @@
                                         <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ $formation->sessions->count() }}</td>
                                         <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ $formation->nb_places_max }}</td>
                                         <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ $formation->cout }}</td>
+                                        <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ $formation->domaine->libelle }}</td>
+                                        <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ $formation->intervenant->nom }}</td>
                                         <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
                                             <div class="flex gap-2 justify-center">
                                                 <a href="{{ route('formations.edit', $formation->id) }}" class="text-blue-500 hover:text-blue-700 font-bold">Modifier</a>
