@@ -184,6 +184,8 @@ class FormationController extends Controller
     public function destroy($id)
     {
         $formation = Formation::find($id);
+        // delete all sessions related to the formation
+        $formation->sessions()->delete();
         $formation->delete();
 
         return redirect()

@@ -65,7 +65,7 @@
                                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded font-medium mr-2">
                                     Enregistrer
                                 </button>
-                                <a href="{{ route('intervenants.index') }}"
+                                <a href="{{ url()->previous() }}"
                                     class="bg-gray-500 text-white px-4 py-2 rounded font-medium">
                                     Retour
                                 </a>

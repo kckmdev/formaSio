@@ -24,6 +24,18 @@
                             @enderror
                         </div>
 
+                        <div class="mb-4">
+                            <label for="lieu" class="block text-gray-700 text-sm font-bold mb-2">Lieu</label>
+                            <input id="lieu" type="text"
+                                class="form-input border border-gray-300 rounded-md @error('lieu') border-red-500 @enderror"
+                                name="lieu" value="{{ old('lieu') }}" required autofocus placeholder="{{$placeholder->lieu}}"
+                                style="padding: 0.5rem;">
+
+                            @error('lieu')
+                                <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <div class="form-group">
                             <label for="formation_id" class="block text-gray-700 text-sm font-bold mb-2">Formation</label>
                             <select class="form-select border border-gray-300 rounded-md @error('formation_id') border-red-500 @enderror"
@@ -38,7 +50,7 @@
                             @enderror
                         </div>
 
-                        <!-- Ajoutez d'autres champs pour la création de sessions ici -->
+                        
 
                         <div class="flex mt-4">
                             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded font-medium mr-2">

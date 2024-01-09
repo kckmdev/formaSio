@@ -45,12 +45,13 @@ class SessionController extends Controller
 
    
         if ($formations->isEmpty()) {
-            return redirect()->route('formations.create')->with('error', 'No formations available. Please create a formation first.');
+            return redirect()->route('formations.create')->with('error', 'Aucune formation disponible. Veuillez créer une formation d\'abord.');
         }
 
 
         $placeholder = (object) [
             'date' => Factory::create()->dateTimeBetween('now', '+1 year'),
+            'lieu' => Factory::create("fr_FR")->city(),
         ];
 
 
@@ -67,10 +68,12 @@ class SessionController extends Controller
     {
         $session = new Session();
         $session->date = $request->input('date');
-        // Ajoutez d'autres propriétés comme nécessaire
+        $session->lieu = $request->input('lieu');
+        $session->formation_id = $request->input('formation_id');
+        $session->nb_places_restantes = $session->nb_places_restantes - 1;
         $session->save();
 
-        return redirect()->route('sessions.index')->with('success', 'Session created successfully');
+        return redirect()->route('sessions.index')->with('success', 'Session créée avec succès');
     }
 
     /**
@@ -99,7 +102,7 @@ class SessionController extends Controller
         // Mettez à jour d'autres propriétés au besoin
         $session->save();
 
-        return redirect()->route('sessions.index')->with('success', 'Session updated successfully');
+        return redirect()->route('sessions.index')->with('success', 'Session mise à jour avec succès');
     }
 
     /**
@@ -113,6 +116,6 @@ class SessionController extends Controller
         $session = Session::find($id);
         $session->delete();
 
-        return redirect()->route('sessions.index')->with('success', 'Session deleted successfully');
+        return redirect()->route('sessions.index')->with('success', 'Session supprimée avec succès');
     }
 }

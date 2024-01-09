@@ -35,7 +35,8 @@
                             <thead class="ltr:text-left rtl:text-right">
                                 <tr>
                                     <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Date</th>
-                                    <!-- Ajoutez d'autres en-têtes de colonnes ici -->
+                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Lieu</th>
+                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Nom de la formation</th>
                                     <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -44,7 +45,10 @@
                                 @foreach ($sessions as $session)
                                     <tr>
                                         <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ $session->date }}</td>
-                                        <!-- Ajoutez d'autres colonnes de données ici -->
+                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ $session->lieu }}</td>
+                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                            <a href="{{ route('formations.edit', $session->formation->id) }}" class="text-blue-500 hover:text-blue-700 font-bold">{{ $session->formation->intitule }}</a>
+                                        </td>
                                         <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
                                             <div class="flex gap-2 justify-center">
                                                 <a href="{{ route('sessions.edit', $session->id) }}"
