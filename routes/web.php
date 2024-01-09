@@ -68,22 +68,22 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
     Route::get('/', 'Admin\DashboardController@index')->name('admin.dashboard');
 
     // Routes de ressources pour la gestion des formations
-    Route::resource('/formations', 'Admin\FormationController');
+    Route::resource('/formations', 'Admin\FormationController')->except(['show']);
     Route::post('/formations/{id}/duplicate', 'Admin\FormationController@duplicate')->name('formations.duplicate');
 
     // Routes de ressources pour la gestion des intervenants
-    Route::resource('/intervenants', 'Admin\IntervenantController');
+    Route::resource('/intervenants', 'Admin\IntervenantController')->except(['show']);
 
     // Routes de ressources pour la gestion des domaines
-    Route::resource('/domaines', 'Admin\DomaineController');
+    Route::resource('/domaines', 'Admin\DomaineController')->except(['show']);
 
     // Routes de ressources pour la gestion des sessions
-    Route::resource('/sessions', 'Admin\SessionController');
+    Route::resource('/sessions', 'Admin\SessionController')->except(['show']);
 
-    Route::resource('/inscriptions', 'Admin\InscriptionController');
+    Route::resource('/inscriptions', 'Admin\InscriptionController')->except(['show']);
 
     // Routes de ressources pour la gestion des utilisateurs
-    Route::resource('/users', 'Admin\UserController');
+    Route::resource('/users', 'Admin\UserController')->except(['show']);
 });
 
 /**
