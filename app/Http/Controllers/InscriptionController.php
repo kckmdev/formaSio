@@ -30,7 +30,7 @@ class InscriptionController extends Controller
         if ($session->nb_places_restantes <= 0) {
             return redirect()->back()->with('error', 'Il n\'y a plus de places disponibles pour cette formation');
         }
-        
+
         //check if user is already registered to this session
         $inscription = Inscription::where('utilisateur_id', auth()->user()->id)->where('session_id', $request->input('session'))->first();
         if ($inscription) {
@@ -47,8 +47,15 @@ class InscriptionController extends Controller
             return redirect()->back()->with('error', 'Vous ne pouvez pas vous inscrire à plus de 3 formations par an');
         }
         //check if user has more than 2 registrations in the same domain
-        $session = $request->input('session');
-        $formation = Formation::find($session);
+        $sessionId = $request->input('session');
+        $session = \App\Models\Session::find($sessionId);
+        if ($session === null) {
+            return redirect()->back()->with('error', 'Session introuvable');
+        }
+        $formation = $session->formation;
+        if ($formation === null) {
+            return redirect()->back()->with('error', 'Formation associée à la session introuvable');
+        }
         $domaine = $formation->domaine;
         $domaine_id = $domaine->id;
 
@@ -57,10 +64,10 @@ class InscriptionController extends Controller
                 ->whereHas('session.formation', function ($query) use ($domaine_id) {
                     $query->where('domaine_id', $domaine_id);
                 })
-                ->whereYear('created_at', $anneeCourante) 
+                ->whereYear('created_at', $anneeCourante)
                 ->count();
 
-            
+
             if ($count >= 2) {
                 return redirect()->back()->with('error', 'Vous ne pouvez pas vous inscrire à plus de 2 formations dans le même domaine pour l\'année courante');
             }
@@ -70,10 +77,10 @@ class InscriptionController extends Controller
         $mois = date('m');
         $jour = date('d');
 
-        if ($mois < 9 || ($mois == 9 && $jour < 1)) {
+        /*    if ($mois < 9 || ($mois == 9 && $jour < 1)) {
             return redirect()->back()->with('error', 'Les inscriptions ne sont pas encore ouvertes');
         }
-
+ */
 
         //if all checks are ok, create the registration
         $inscription = new Inscription();
@@ -88,7 +95,7 @@ class InscriptionController extends Controller
         $session = \App\Models\Session::find($session);
         $session->nb_places_restantes = $session->nb_places_restantes - 1;
         $session->save();
-        
+
 
         return redirect()->route('profil');
     }
