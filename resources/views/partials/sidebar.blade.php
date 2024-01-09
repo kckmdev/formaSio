@@ -2,13 +2,13 @@
     <div class="px-4 py-6">
         <ul class="space-y-1">
             <li>
-                <a href="{{ route('admin.dashboard') }}" class="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 {{ request()->routeIs('admin.dashboard') ? 'bg-blue-500 text-white' : '' }}">
+                <a href="{{ route('admin.dashboard') }}" class="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 {{ request()->routeIs('admin.dashboard') ? 'bg-gray-200 text-white' : '' }}">
                     Général
                 </a>
             </li>
 
             <li>
-                <details class="group [&_summary::-webkit-details-marker]:hidden">
+                <details class="group [&_summary::-webkit-details-marker]:hidden" {{ request()->routeIs('intervenants.*')  ? 'open' : '' }}>
                     <summary
                         class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                     >
@@ -34,7 +34,7 @@
                         <li>
                             <a
                                 href="{{ route('intervenants.index') }}"
-                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('intervenants.index') ? 'bg-blue-500 text-white' : '' }}"
+                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('intervenants.index') ? 'bg-gray-200 text-white' : '' }}"
                             >
                                 Liste des Intervenants
                             </a>
@@ -43,7 +43,7 @@
                         <li>
                             <a
                                 href="{{ route('intervenants.create') }}"
-                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('intervenants.create') ? 'bg-blue-500 text-white' : '' }}"
+                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('intervenants.create') ? 'bg-gray-200 text-white' : '' }}"
                             >
                                 Ajouter un Intervenant
                             </a>
@@ -53,7 +53,7 @@
             </li>
 
             <li>
-                <details class="group [&_summary::-webkit-details-marker]:hidden">
+                <details class="group [&_summary::-webkit-details-marker]:hidden" {{ request()->routeIs('formations.*')  ? 'open' : '' }} >
                     <summary
                         class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                     >
@@ -79,7 +79,7 @@
                         <li>
                             <a
                                 href="{{ route('formations.index') }}"
-                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('formations.index') ? 'bg-blue-500 text-white' : '' }}"
+                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('formations.index') ? 'bg-gray-200 text-white' : '' }}"
                             >
                                 Liste des Formations
                             </a>
@@ -88,7 +88,7 @@
                         <li>
                             <a
                                 href="{{ route('formations.create') }}"
-                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('formations.create') ? 'bg-blue-500 text-white' : '' }}"
+                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('formations.create') ? 'bg-gray-200 text-white' : '' }}"
                             >
                                 Ajouter une Formation
                             </a>
@@ -98,7 +98,7 @@
             </li>
 
             <li>
-                <details class="group [&_summary::-webkit-details-marker]:hidden">
+                <details class="group [&_summary::-webkit-details-marker]:hidden" {{ request()->routeIs('sessions.*')  ? 'open' : '' }}>
                     <summary
                         class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                     >
@@ -124,7 +124,7 @@
                         <li>
                             <a
                                 href="{{ route('sessions.index') }}"
-                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('sessions.index') ? 'bg-blue-500 text-white' : '' }}"
+                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('sessions.index') ? 'bg-gray-200 text-white' : '' }}"
                             >
                                 Liste des Sessions
                             </a>
@@ -133,7 +133,7 @@
                         <li>
                             <a
                                 href="{{ route('sessions.create') }}"
-                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('sessions.create') ? 'bg-blue-500 text-white' : '' }}"
+                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('sessions.create') ? 'bg-gray-200 text-white' : '' }}"
                             >
                                 Ajouter une Session
                             </a>
@@ -145,7 +145,7 @@
             <li>
                 <a
                     href="{{ route('domaines.index') }}"
-                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('domaines.index') ? 'bg-blue-500 text-white' : '' }}"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('domaines.index') ? 'bg-gray-200 text-white' : '' }}"
                 >
                     Domaines
                 </a>
@@ -154,7 +154,7 @@
             <li>
                 <a
                     href="{{ route('inscriptions.index') }}"
-                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('inscriptions.index') ? 'bg-blue-500 text-white' : '' }}"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 {{ request()->routeIs('inscriptions.index') ? 'bg-gray-200 text-white' : '' }}"
                 >
                     Inscriptions
                 </a>
