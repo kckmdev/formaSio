@@ -3,11 +3,6 @@
 @section('title', 'Inscription')
 
 @section('content')
-@if(session('error'))
-<div class="bg-red-500 p-4  mb-6 text-white text-center">
-    {{ session('error') }}
-</div>
-@endif
 <div class="bg-white p-8 mx-auto shadow-lg rounded-lg w-96 xl:w-1/2">
     <h1 class="text-2xl font-bold mb-6">BULLETIN D’INSCRIPTION</h1>
 
