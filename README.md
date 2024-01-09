@@ -36,6 +36,13 @@
   - [x] 8.3 Supprimer un domaine
   - [x] 8.4 Lier des formations à des domaines spécifiques
 
+## reste a faire côté admin 
+- [ ] 1. Créer une formation , modifier une formation supprimer une formation
+- [ ] 2. Gérer les profils et accès des utilisateurs (bénévoles/salariés) pour les inscriptions en ligne
+- [ ] 3. Valider manuellement les inscriptions faites en ligne (je suis pas sur mais changer le statut de l'inscription de en cours a validé ) 
+- [ ] 4. Imprimer une liste des inscrits à une formation (une semaine avant la formation) (ici je pene on demande au format pdf)
+- [ ] 5. Historiser les participations en fin d'année xml aussi
+- [ ] 6. Gérer les intervenants (ajouter, modifier, supprimer) on le demande pas mais je pense que c'est bien de le faire
 
 # Les routes
 
