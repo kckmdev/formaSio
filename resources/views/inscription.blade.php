@@ -50,11 +50,8 @@
 
         </div>
 
-        <div class="mb-6">
-            <label for="formationNumbers" class="block text-sm font-medium text-gray-700">Numéro de la formation
-                demandée</label>
-            <input type="text" name="formationNumbers" id="formationNumbers" class="mt-1 p-2 border rounded w-full" value='{{$formation->id}}'>
-        </div>
+        <input type="text" name="formationNumbers" value='{{$formation->id}}' hidden>
+        
 
         <div class="mb-6">
             <label for="documents" class="block text-sm font-medium text-gray-700">Documents justificatifs (joindre pour
