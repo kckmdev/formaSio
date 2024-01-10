@@ -81,6 +81,8 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
     Route::resource('/sessions', 'Admin\SessionController')->except(['show']);
 
     Route::resource('/inscriptions', 'Admin\InscriptionController')->except(['show']);
+    Route::get('/inscriptions/{id}/approve', 'Admin\InscriptionController@approve')->name('admin.inscriptions.approve');
+    Route::get('/inscriptions/{id}/reject', 'Admin\InscriptionController@reject')->name('admin.inscriptions.reject');
 
     // Routes de ressources pour la gestion des utilisateurs
     Route::resource('/users', 'Admin\UserController')->except(['show']);
