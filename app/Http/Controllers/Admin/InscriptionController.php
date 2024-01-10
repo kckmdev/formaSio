@@ -33,7 +33,10 @@ class InscriptionController extends Controller
     {
         $inscription = Inscription::findOrFail($id);
         $inscription->etat = 'rejete';
+        // if rejected, increment nb_places_restantes
+        $inscription->session->nb_places_restantes += 1;
         $inscription->save();
+        $inscription->session->save();
 
         // ... Code pour notifier l'utilisateur ...
 
