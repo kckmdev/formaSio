@@ -14,7 +14,7 @@
   - [x] 1.5 Dupliquer une formation
 - [x] 2. Gérer les profils et accès des utilisateurs (bénévoles/salariés) pour les inscriptions en ligne
 - [x] 3. Valider manuellement les inscriptions faites en ligne (changer le statut de l'inscription de "en cours" à "validé")
-- [ ] 4. Imprimer une liste des inscrits à une formation (une semaine avant la formation) (au format PDF)
+- [x] 4. Imprimer une liste des inscrits à une formation (une semaine avant la formation) (au format PDF)
 - [ ] 5. Historiser les participations en fin d'année (au format XML)
 - [x] 6. Gérer les intervenants (ajouter, modifier, supprimer)
   - [x] 6.1 Ajouter un intervenant
