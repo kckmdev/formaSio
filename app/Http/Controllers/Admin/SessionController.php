@@ -70,7 +70,7 @@ class SessionController extends Controller
         $session->date = $request->input('date');
         $session->lieu = $request->input('lieu');
         $session->formation_id = $request->input('formation_id');
-        $session->nb_places_restantes = $session->nb_places_restantes - 1;
+        $session->nb_places_restantes = $session->formation->nb_places_max;
         $session->save();
 
         return redirect()->route('sessions.index')->with('success', 'Session créée avec succès');
@@ -114,6 +114,7 @@ class SessionController extends Controller
     public function destroy($id)
     {
         $session = Session::find($id);
+        $session->inscriptions()->delete();
         $session->delete();
 
         return redirect()->route('sessions.index')->with('success', 'Session supprimée avec succès');
