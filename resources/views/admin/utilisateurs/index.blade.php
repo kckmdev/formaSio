@@ -12,9 +12,8 @@
                 <div class="flex justify-between">
                     <div class="flex gap-2">
                         <a href="{{ route('utilisateurs.create') }}"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ajouter un utilisateur</a>
-                        <a href="{{ route('utilisateurs.index') }}"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Imprimer une liste des utilisateurs</a>
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ajouter un
+                            utilisateur</a>
                     </div>
                     <form action="{{ route('utilisateurs.index') }}" method="GET" class="flex items-center">
                         <label for="nb_lignes" class="mr-2">Nombre de lignes max</label>
@@ -35,32 +34,45 @@
                             <thead class="ltr:text-left rtl:text-right">
                                 <tr>
                                     <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Nom</th>
-                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Prénom</th>
+                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Prénom
+                                    </th>
                                     <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Email</th>
-                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Téléphone</th>
-                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Statut</th>
-                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Créé le</th>
-                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Modifié le</th>
-                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Actions</th>
+                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Téléphone
+                                    </th>
+                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Statut
+                                    </th>
+                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Créé le
+                                    </th>
+                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Modifié le
+                                    </th>
+                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Actions
+                                    </th>
                                 </tr>
                             </thead>
 
                             <tbody class="divide-y divide-gray-200">
                                 @foreach ($utilisateurs as $utilisateur)
                                     <tr>
-                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ $utilisateur->nom }}</td>
-                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ $utilisateur->prenom }}</td>
-                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ $utilisateur->email }}</td>
-                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ $utilisateur->telephone }}</td>
-                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ $utilisateur->statut }}</td>
-                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ $utilisateur->created_at->locale('fr')->diffForHumans() }}</td>
-                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ $utilisateur->updated_at->locale('fr')->diffForHumans() }}</td>
+                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                            {{ $utilisateur->nom }}</td>
+                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                            {{ $utilisateur->prenom }}</td>
+                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                            {{ $utilisateur->email }}</td>
+                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                            {{ $utilisateur->telephone }}</td>
+                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                            {{ $utilisateur->statut }}</td>
+                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                            {{ $utilisateur->created_at->locale('fr')->diffForHumans() }}</td>
+                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                            {{ $utilisateur->updated_at->locale('fr')->diffForHumans() }}</td>
                                         <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
                                             <div class="flex gap-2 justify-center">
                                                 <a href="{{ route('utilisateurs.edit', $utilisateur->id) }}"
                                                     class="text-blue-500 hover:text-blue-700 font-bold">Modifier</a>
-                                                <form action="{{ route('utilisateurs.destroy', $utilisateur->id) }}" method="POST"
-                                                    class="inline"
+                                                <form action="{{ route('utilisateurs.destroy', $utilisateur->id) }}"
+                                                    method="POST" class="inline"
                                                     onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">
                                                     @csrf
                                                     @method('DELETE')

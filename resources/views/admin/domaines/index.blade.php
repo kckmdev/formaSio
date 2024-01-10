@@ -12,9 +12,8 @@
                 <div class="flex justify-between">
                     <div class="flex gap-2">
                         <a href="{{ route('domaines.create') }}"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ajouter un domaine</a>
-                        <a href="{{ route('domaines.index') }}"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Imprimer une liste des domaines</a>
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ajouter un
+                            domaine</a>
                     </div>
                     <form action="{{ route('domaines.index') }}" method="GET" class="flex items-center">
                         <label for="nb_lignes" class="mr-2">Nombre de lignes max</label>
@@ -34,15 +33,18 @@
                         <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
                             <thead class="ltr:text-left rtl:text-right">
                                 <tr>
-                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Libellé</th>
-                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Actions</th>
+                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Libellé
+                                    </th>
+                                    <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">Actions
+                                    </th>
                                 </tr>
                             </thead>
 
                             <tbody class="divide-y divide-gray-200">
                                 @foreach ($domaines as $domaine)
                                     <tr>
-                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ $domaine->libelle }}</td>
+                                        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                            {{ $domaine->libelle }}</td>
                                         <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
                                             <div class="flex gap-2 justify-center">
                                                 <a href="{{ route('domaines.edit', $domaine->id) }}"

@@ -13,8 +13,6 @@
                     <div class="flex gap-2">
                         <a href="{{ route('sessions.create') }}"
                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ajouter une session</a>
-                        <a href="{{ route('sessions.index') }}"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Imprimer une liste des sessions</a>
                     </div>
                     <form action="{{ route('sessions.index') }}" method="GET" class="flex items-center">
                         <label for="nb_lignes" class="mr-2">Nombre de lignes max</label>
