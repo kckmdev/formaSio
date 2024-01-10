@@ -15,7 +15,7 @@
                                 <a href="{{ route('formations.index') }}"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Gérer les
                                     formations</a>
-                                <a href="{{ route('users.index') }}"
+                                <a href="{{ route('utilisateurs.index') }}"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Gérer les
                                     utilisateurs</a>
                                 <a href="{{ route('inscriptions.index') }}"
