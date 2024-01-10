@@ -1,6 +1,7 @@
 # FORMA MISSION 2
 [Voir le wiki](https://github.com/kckmdev/formaSio/wiki)
-
+[Voir la doc technique](./doc_technique.md)
+[Voir la doc utilisateur](./doc_utilisateur.md)
 ## Côté client 
 - [ ] 5. Revoir le jeu de tests
 - [ ] 6. Revoir les salariés et bénévoles
