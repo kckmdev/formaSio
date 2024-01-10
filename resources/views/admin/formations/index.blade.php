@@ -15,7 +15,7 @@
                     <a href="{{ route('formations.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ajouter une
                         formation</a>
                 </div>
-                @if (now()->month == 1)
+                @if (now()->month == 12)
                 <!-- Bouton actif pour l'historisation -->
                 <div class="flex gap-2">
                     <a href="{{ route('admin.formations.historique') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Historiser</a>
