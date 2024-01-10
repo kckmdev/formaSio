@@ -85,7 +85,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
     Route::get('/inscriptions/{id}/reject', 'Admin\InscriptionController@reject')->name('admin.inscriptions.reject');
 
     // Routes de ressources pour la gestion des utilisateurs
-    Route::resource('/users', 'Admin\UserController')->except(['show']);
+    Route::resource('/utilisateurs', 'Admin\UserController')->except(['show']);
 });
 
 /**
