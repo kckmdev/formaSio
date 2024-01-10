@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
     // Routes de ressources pour la gestion des formations
     Route::resource('/formations', 'Admin\FormationController')->except(['show']);
     Route::post('/formations/{id}/duplicate', 'Admin\FormationController@duplicate')->name('formations.duplicate');
+    Route::get('/admin/formations/historique', 'Admin\FormationController@downloadHistorique')->name('admin.formations.historique');
     // Routes de ressources pour la gestion des intervenants
     Route::resource('/intervenants', 'Admin\IntervenantController')->except(['show']);
 

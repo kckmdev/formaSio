@@ -9,8 +9,11 @@ use App\Models\Intervenant;
 use Faker\Factory;
 use App\Models\Domaine;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Response;
 use Dompdf\Dompdf;
+use Carbon\Carbon;
 use App\Models\Session; // Import the Session model class
+use App\Models\Inscription; // Import the Inscription model class
 
 class FormationController extends Controller
 {
@@ -240,4 +243,30 @@ class FormationController extends Controller
         // Download the PDF file
         return $pdf->stream('formation_utilisateurs.pdf');
     }
+
+    public function downloadHistorique()
+{
+    // Vérifier si la demande est faite à la fin de l'année
+    if (!Carbon::now()->isLastMonthOfYear()) {
+        abort(403, 'L’historisation est disponible uniquement en fin d’année.');
+    }
+
+    // Récupérer les inscriptions de l'année en cours
+    $inscriptions = Inscription::with('utilisateur', 'session.formation')
+        ->whereYear('created_at', date('Y'))
+        ->get();
+
+    // Générer le contenu du fichier CSV
+    $csvContent = "Nom,Email,Formation,Date de la session\n";
+    foreach ($inscriptions as $inscription) {
+        $csvContent .= "{$inscription->utilisateur->nom},{$inscription->utilisateur->email},{$inscription->session->formation->titre},{$inscription->session->date_debut}\n";
+    }
+
+    // Créer une réponse de téléchargement
+    $filename = 'historique-participations-' . date('Y') . '.csv';
+    return Response::make($csvContent, 200, [
+        'Content-Type' => 'text/csv',
+        'Content-Disposition' => "attachment; filename={$filename}",
+    ]);
+}
 }
