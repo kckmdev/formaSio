@@ -70,7 +70,6 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
     // Routes de ressources pour la gestion des formations
     Route::resource('/formations', 'Admin\FormationController')->except(['show']);
     Route::post('/formations/{id}/duplicate', 'Admin\FormationController@duplicate')->name('formations.duplicate');
-
     // Routes de ressources pour la gestion des intervenants
     Route::resource('/intervenants', 'Admin\IntervenantController')->except(['show']);
 
@@ -79,6 +78,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
 
     // Routes de ressources pour la gestion des sessions
     Route::resource('/sessions', 'Admin\SessionController')->except(['show']);
+    Route::get('/sessions/{id}/utilisateurs/pdf', 'Admin\FormationController@exportPdf')->name('formations.utilisateurs.pdf');
 
     Route::resource('/inscriptions', 'Admin\InscriptionController')->except(['show']);
     Route::get('/inscriptions/{id}/approve', 'Admin\InscriptionController@approve')->name('admin.inscriptions.approve');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\CustomUser;
 
 class Session extends Model
 {
@@ -41,4 +42,10 @@ class Session extends Model
     {
         return $this->hasMany(Inscription::class);
     }
+
+    public function utilisateurs()
+    {
+        return $this->belongsToMany(CustomUser::class, 'inscriptions', 'session_id', 'utilisateur_id');
+    }
+    
 }

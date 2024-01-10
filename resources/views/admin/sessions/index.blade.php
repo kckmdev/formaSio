@@ -59,6 +59,7 @@
                                                     <button type="submit"
                                                         class="text-red-500 hover:text-red-700 font-bold">Supprimer</button>
                                                 </form>
+                                                <a href="{{ route('formations.utilisateurs.pdf', $session->id) }}" target="_blank" class="text-purple-500 hover:text-purple-700 font-bold">Imprimer</a>
                                             </div>
                                         </td>
                                     </tr>

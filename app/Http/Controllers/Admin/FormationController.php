@@ -8,6 +8,9 @@ use App\Models\Formation;
 use App\Models\Intervenant;
 use Faker\Factory;
 use App\Models\Domaine;
+use Illuminate\Support\Facades\View;
+use Dompdf\Dompdf;
+use App\Models\Session; // Import the Session model class
 
 class FormationController extends Controller
 {
@@ -96,7 +99,7 @@ class FormationController extends Controller
         // transform the duree into minutes
         $duree = explode(':', $data['duree']);
         $data['duree'] = $duree[0] * 60 + $duree[1];
-            
+
         // attach the intervenant to the formation
         $intervenant = Intervenant::findorFail($data['intervenant']);
         $data['intervenant_id'] = $intervenant->id;
@@ -141,7 +144,7 @@ class FormationController extends Controller
     {
         $intervenants = Intervenant::all();
         $domaines = Domaine::all();
-    
+
         return view('admin.formations.edit', compact('formation', 'intervenants', 'domaines'));
     }
 
@@ -215,6 +218,26 @@ class FormationController extends Controller
             ->route('formations.index')
             ->with('success', 'Formation dupliquée avec succès.');
     }
-}
 
-?>
+    /**
+     * Export the list of registered users for the formation as a PDF.
+     *
+     * @param int $id The ID of the formation.
+     * @return \Illuminate\Http\Response
+     */
+    public function exportPdf($id)
+    {
+
+        $session = Session::findOrFail($id);
+        $formation = $session->formation;
+        $utilisateurs = $session->utilisateurs()->get();
+
+        $pdf = new Dompdf();
+        $pdf->loadHtml(View::make('admin.formations.pdf', compact('formation', 'utilisateurs'))->render());
+        $pdf->setPaper('A4', 'landscape');
+        $pdf->render();
+
+        // Download the PDF file
+        return $pdf->stream('formation_utilisateurs.pdf');
+    }
+}
