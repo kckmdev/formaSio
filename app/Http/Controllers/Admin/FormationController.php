@@ -247,19 +247,19 @@ class FormationController extends Controller
     public function downloadHistorique()
 {
     // Vérifier si la demande est faite à la fin de l'année
-    if (!Carbon::now()->isLastMonthOfYear()) {
+    if (!now()->month == 12) {
         abort(403, 'L’historisation est disponible uniquement en fin d’année.');
     }
 
-    // Récupérer les inscriptions de l'année en cours
-    $inscriptions = Inscription::with('utilisateur', 'session.formation')
-        ->whereYear('created_at', date('Y'))
+    // get registrations for the current year with the status 'approved'
+    $inscriptions = Inscription::whereYear('created_at', now()->year)
+        ->where('etat', 'valide')
         ->get();
 
-    // Générer le contenu du fichier CSV
-    $csvContent = "Nom,Email,Formation,Date de la session\n";
+    // generate the CSV content with a nice format and include data
+    $csvContent = "Nom;Prénom;Email;Formation;Lieu de session;Date d'inscription\n";
     foreach ($inscriptions as $inscription) {
-        $csvContent .= "{$inscription->utilisateur->nom},{$inscription->utilisateur->email},{$inscription->session->formation->titre},{$inscription->session->date_debut}\n";
+        $csvContent .= "{$inscription->utilisateur->nom};{$inscription->utilisateur->prenom};{$inscription->utilisateur->email};{$inscription->session->formation->intitule};{$inscription->session->lieu};{$inscription->created_at->format('d/m/Y H:i:s')}\n";
     }
 
     // Créer une réponse de téléchargement
