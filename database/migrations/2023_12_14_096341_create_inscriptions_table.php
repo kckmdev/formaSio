@@ -16,7 +16,7 @@ class CreateInscriptionsTable extends Migration
         Schema::create('inscriptions', function (Blueprint $table) {
             $table->id();
             $table->dateTime('date_inscription');
-            $table->enum('etat_paiement', ['en_cours', 'paye']);
+            $table->enum('etat', ['en_cours', 'valide', 'rejete']);
             $table->unsignedBigInteger('session_id');
             $table->unsignedBigInteger('utilisateur_id');
             $table->foreign('session_id')->references('id')->on('sessions');

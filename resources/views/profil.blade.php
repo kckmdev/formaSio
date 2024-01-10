@@ -63,8 +63,8 @@
                                                 <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20v-7m0 0l-9-5 9 5 9-5-9 5z"></path>
                                             </svg>
-                                            <strong>Etat du paiement :</strong>
-                                            <span>{{ $inscription->etat_paiement }}</span>
+                                            <strong>Etat :</strong>
+                                            <span>{{ $inscription->etat }}</span>
                                         </div>
                                     </div>
                                     <form action="{{ route('delete', $inscription->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler cette inscription ?');">
