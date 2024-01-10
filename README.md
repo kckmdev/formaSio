@@ -3,8 +3,8 @@
 [Voir la doc technique](./doc_technique.md)
 [Voir la doc utilisateur](./doc_utilisateur.md)
 ## Côté client 
-- [ ] 5. Revoir le jeu de tests
-- [ ] 6. Revoir les salariés et bénévoles
+- [x] 5. Revoir le jeu de tests
+- [x] 6. Revoir les salariés et bénévoles
 
 ## Côté admin
 - [x] 1. Créer une formation, modifier une formation, supprimer une formation, dupliquer une formation
@@ -16,7 +16,7 @@
 - [x] 2. Gérer les profils et accès des utilisateurs (bénévoles/salariés) pour les inscriptions en ligne
 - [x] 3. Valider manuellement les inscriptions faites en ligne (changer le statut de l'inscription de "en cours" à "validé")
 - [x] 4. Imprimer une liste des inscrits à une formation (une semaine avant la formation) (au format PDF)
-- [ ] 5. Historiser les participations en fin d'année (au format XML)
+- [x] 5. Historiser les participations en fin d'année (au format XML)
 - [x] 6. Gérer les intervenants (ajouter, modifier, supprimer)
   - [x] 6.1 Ajouter un intervenant
   - [x] 6.2 Modifier un intervenant
