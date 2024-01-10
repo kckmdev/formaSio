@@ -9,7 +9,7 @@
         <!-- Flex Row for equal height sections -->
         <div class="flex flex-col md:flex-row w-full">
             <!-- Profile Section -->
-            <div class="w-full md:w-1/2 px-2 mb-4">
+            <div class="w-full md:w-1/2 px-2 mb-4 mx-auto">
                 <div class="bg-gray-100 p-8 rounded-lg border-l-2 border-blue-500 flex flex-col justify-between h-full">
                     <div class="text-center">
                         <!-- Profile Image -->
@@ -31,57 +31,65 @@
             </div>
 
             <!-- My registrations Section -->
-            <div class="w-full md:w-1/2 px-2 mb-4">
-                <div class="bg-gray-100 p-8 rounded-lg  h-full">
-                    <div class="flex flex-col items-center justify-between h-full">
-                        <div>
-                            <h1 class="text-4xl font-bold text-gray-800 mb-2 text-center">Mes inscriptions</h1>
-                            <div class="text-md text-gray-600 mb-4">
-                                @forelse($inscriptions as $inscription)
-                                <!-- Display session details in a flex container -->
-                                <div class="bg-white p-4 rounded-lg shadow-md mt-6">
+            @if(!Auth::user()->isAdmin())
+                <div class="w-full md:w-1/2 px-2 mb-4">
+                    <div class="bg-gray-100 p-8 rounded-lg  h-full">
+                        <div class="flex flex-col items-center justify-between h-full">
+                            <div>
+                                <h1 class="text-4xl font-bold text-gray-800 mb-2 text-center">Mes inscriptions</h1>
+                                <div class="text-md text-gray-600 mb-4">
+                                    @forelse($inscriptions as $inscription)
+                                    <!-- Display session details in a flex container -->
+                                    <div class="bg-white p-4 rounded-lg shadow-md mt-6">
 
-                                    <h3 class="text-lg font-medium mb-4"> {{ $inscription->session->formation->intitule }}</h3>
+                                        <h3 class="text-lg font-medium mb-4"> {{ $inscription->session->formation->intitule }}</h3>
 
-                                    <div class="grid grid-cols-2 gap-4 mb-4">
-                                        <div>
-                                            <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                            </svg>
-                                            <strong>Date :</strong>
-                                            <span>{{ $inscription->session->date }}</span>
+                                        <div class="grid grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                                </svg>
+                                                <strong>Date :</strong>
+                                                <span>{{ $inscription->session->date }}</span>
+                                            </div>
+                                            <div>
+                                                <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                </svg>
+                                                <strong>Coût :</strong>
+                                                <span>{{ $inscription->session->formation->cout }} €</span>
+                                            </div>
+                                            <div>
+                                                <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20v-7m0 0l-9-5 9 5 9-5-9 5z"></path>
+                                                </svg>
+                                                <strong>Etat :</strong>
+                                                <span>{{ $inscription->etat }}</span>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                            </svg>
-                                            <strong>Coût :</strong>
-                                            <span>{{ $inscription->session->formation->cout }} €</span>
-                                        </div>
-                                        <div>
-                                            <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20v-7m0 0l-9-5 9 5 9-5-9 5z"></path>
-                                            </svg>
-                                            <strong>Etat du paiement :</strong>
-                                            <span>{{ $inscription->etat_paiement }}</span>
-                                        </div>
+                                        <form action="{{ route('delete', $inscription->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler cette inscription ?');">
+                                            @csrf
+                                            @if($inscription->etat != 'rejete')
+                                                <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded-md">
+                                                    Annuler l'inscription
+                                                </button>
+                                            @else
+                                                <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded-md" disabled>
+                                                    L'inscription a été annulée par un administrateur veuillez contacter un responsable
+                                                </button>
+                                            @endif
+                                        </form>
                                     </div>
-                                    <form action="{{ route('delete', $inscription->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler cette inscription ?');">
-                                        @csrf
-                                        <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded-md">
-                                            Annuler l'inscription
-                                        </button>
-                                    </form>
+                                    @empty
+                                    <p class="text-center">Vous n'êtes inscrit à aucune formation.</p>
+                                    @endforelse
                                 </div>
-                                @empty
-                                <p class="text-center">Vous n'êtes inscrit à aucune formation.</p>
-                                @endforelse
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
     @endsection

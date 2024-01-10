@@ -85,7 +85,7 @@ class InscriptionController extends Controller
         //if all checks are ok, create the registration
         $inscription = new Inscription();
         $inscription->date_inscription = now();
-        $inscription->etat_paiement = 'en_cours';
+        $inscription->etat = 'en_cours';
         $inscription->session_id = $request->input('session');
         $inscription->utilisateur_id = auth()->user()->id;
         $inscription->save();
