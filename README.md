@@ -3,8 +3,11 @@
 [Voir la doc technique](./doc_technique.md)
 [Voir la doc utilisateur](./doc_utilisateur.md)
 ## Côté client 
-- [x] 5. Revoir le jeu de tests
-- [x] 6. Revoir les salariés et bénévoles
+- [x] 1. Gestion des inscriptions (formulaire)
+- [x] 3. Gestion des suppression d'inscription 
+- [x] 4. Page de profil (avec les formations choisies)
+- [x] 5. revoir le jeu de tests
+- [x] 6. revoir les salariés et bénévoles
 
 ## Côté admin
 - [x] 1. Créer une formation, modifier une formation, supprimer une formation, dupliquer une formation
