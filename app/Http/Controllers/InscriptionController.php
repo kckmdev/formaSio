@@ -87,8 +87,8 @@ class InscriptionController extends Controller
         $inscription->date_inscription = now();
         $inscription->etat = 'en_cours';
         $inscription->session_id = $request->input('session');
-        $inscription->utilisateur_id = auth()->user()->id;
-        $inscription->save();
+        $inscription->utilisateur_id = auth()->user()->id;  
+        $inscription->save();   
 
         //update the number of remaining places
         $session = $request->input('session');
