@@ -3,7 +3,7 @@
 @section('title', 'Forma')
 
 @section('content')
-<div class="flex items-center justify-center min-h-screen">
+<div class="flex items-center justify-center">
     <div class="relative p-10 bg-white rounded shadow-md max-w-lg w-full">
         @if(session('statut')) 
         <div id="errorMessage" class="absolute top-0 mt-2 left-0 right-0 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-center"
