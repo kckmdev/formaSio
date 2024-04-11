@@ -75,12 +75,11 @@ class InscriptionController extends Controller
 
         //check if registrations are open
         $mois = date('m');
-        $jour = date('d');
 
-        /*    if ($mois < 9 || ($mois == 9 && $jour < 1)) {
-            return redirect()->back()->with('error', 'Les inscriptions ne sont pas encore ouvertes');
-        }
- */
+        //     if ($mois < 9) {
+        //     return redirect()->back()->with('error', 'Les inscriptions ne sont pas encore ouvertes');
+        // }
+ 
 
         //if all checks are ok, create the registration
         $inscription = new Inscription();
