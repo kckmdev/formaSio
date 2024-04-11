@@ -8,9 +8,15 @@
             <li class="mr-6"><a href="/formations">Formations</a></li>
             @if(Auth::check())
             <li class="mr-6">
-                <a href="/profil" class="text-white font-bold bg-gray-700 px-4 py-2 rounded-full shadow-md hover:shadow-lg border border-gray-700 hover:border-gray-500 transform hover:scale-105 active:scale-90 active:shadow-inner active:text-gray-300 transition duration-150 ease-in-out">
+                @if(Auth::user()->statut == 'admin')
+                    <a href="/admin" class="text-white bg-red-500 px-4 py-2 rounded-full shadow-md hover:shadow-lg border border-red-500 hover:border-red-400 transform hover:scale-105 active:scale-90 active:shadow-inner active:text-red-300 transition duration-150 ease-in-out">
+                    Administration
+                </a>               
+                @else(Auth::user()->statut == 'utilisateur')
+                    <a href="/profil" class="text-white font-bold bg-gray-700 px-4 py-2 rounded-full shadow-md hover:shadow-lg border border-gray-700 hover:border-gray-500 transform hover:scale-105 active:scale-90 active:shadow-inner active:text-gray-300 transition duration-150 ease-in-out">
                     Profil de {{ Auth::user()->nom }}
-                </a>
+                     </a>          
+                @endif
             </li>
             <li class="mr-6">
                 <form action="/logout" method="POST">
