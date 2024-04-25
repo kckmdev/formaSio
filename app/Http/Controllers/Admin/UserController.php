@@ -87,7 +87,7 @@ class UserController extends Controller
             'prenom' => $data['prenom'],
             'telephone' => $data['telephone'],
             'email' => $data['email'],
-            'mot_de_passe' => Hash::make($data['mot_de_passe']),
+            'mot_de_passe' => $data['mot_de_passe'],
             'statut' => ($data['statut'] === 'admin') ? 'admin' : 'utilisateur',
         ]);
 
