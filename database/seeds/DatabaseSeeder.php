@@ -424,12 +424,6 @@ class DatabaseSeeder extends Seeder
             'session_id' => 7,
         ]);
         Inscription::create([
-            'id' => 8,
-            'date_inscription' => '2025-04-11 09:00:00',
-            'utilisateur_id' => 10,
-            'session_id' => 8,
-        ]);
-        Inscription::create([
             'id' => 9,
             'date_inscription' => '2025-04-11 09:00:00',
             'utilisateur_id' => 4,
