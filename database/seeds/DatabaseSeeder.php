@@ -39,7 +39,9 @@ class DatabaseSeeder extends Seeder
             'statut' => 'admin',
         ]);
         //création de 10 utilisateurs
-        CustomUser::factory(10)->create();
+        CustomUser::factory(10)->create([
+            'mot_de_passe' => Hash::make('password'),
+        ]);
 
         //création de 5 domaines
         Domaine::create([
