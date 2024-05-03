@@ -21,8 +21,8 @@ class CreateFormationsTable extends Migration
             $table->float('cout');
             $table->unsignedBigInteger('intervenant_id');
             $table->unsignedBigInteger('domaine_id');
-            $table->foreign('intervenant_id')->references('id')->on('intervenants');
-            $table->foreign('domaine_id')->references('id')->on('domaines');
+            $table->foreign('intervenant_id')->references('id')->on('intervenants')->onDelete('cascade');;
+            $table->foreign('domaine_id')->references('id')->on('domaines')->onDelete('cascade');;
             $table->timestamps();
         });
     }

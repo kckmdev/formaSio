@@ -20,7 +20,7 @@ class CreateInscriptionsTable extends Migration
             $table->unsignedBigInteger('session_id');
             $table->unsignedBigInteger('utilisateur_id');
             $table->foreign('session_id')->references('id')->on('sessions')->onDelete('cascade');
-            $table->foreign('utilisateur_id')->references('id')->on('utilisateurs');
+            $table->foreign('utilisateur_id')->references('id')->on('utilisateurs')->onDelete('cascade');
             $table->timestamps(); 
         });
     }
