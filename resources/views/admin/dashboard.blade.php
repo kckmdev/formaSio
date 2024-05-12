@@ -21,10 +21,10 @@
                                 <a href="{{ route('inscriptions.index') }}"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Gérer les
                                     inscriptions</a>
-                                <a href="{{ route('inscriptions.index') }}"
+                                <a href="{{ route('sessions.index') }}"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Imprimer
-                                    une liste des inscrits à une formation</a>
-                                <a href="{{ route('inscriptions.index') }}"
+                                    une liste des inscrits à une session (imprimer)</a>
+                                <a href="{{ route('formations.index') }}"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Historiser
                                     les participations en fin d'année</a>
                                 <a href="{{ route('intervenants.index') }}"

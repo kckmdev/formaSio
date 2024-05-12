@@ -38,8 +38,6 @@ class InscriptionController extends Controller
         $inscription->save();
         $inscription->session->save();
 
-        // ... Code pour notifier l'utilisateur ...
-
         return redirect()->route('inscriptions.index')->with('error', 'Inscription rejetée.');
     }
 }

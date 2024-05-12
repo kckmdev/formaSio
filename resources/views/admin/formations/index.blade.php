@@ -15,17 +15,11 @@
                     <a href="{{ route('formations.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ajouter une
                         formation</a>
                 </div>
-                @if (now()->month == 12)
-                <!-- Bouton actif pour l'historisation -->
+                
                 <div class="flex gap-2">
                     <a href="{{ route('admin.formations.historique') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Historiser</a>
                 </div>
-                @else
-                <!-- Bouton désactivé en dehors de la dernière période du mois de l'année -->
-                <div class="flex gap-2">
-                    <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" disabled>Historiser</button>
-                </div>
-                @endif
+                
                 <form action="{{ route('formations.index') }}" method="GET" class="flex items-center">
                     <label for="nb_lignes" class="mr-2">Nombre de lignes max</label>
                     <select name="nb_lignes" id="nb_lignes" onchange="this.form.submit()" class="p-2 rounded border-gray-300">
